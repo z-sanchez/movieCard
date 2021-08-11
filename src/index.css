@@ -1,0 +1,178 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: bahn;
+  src: url("../src/fonts/BAHNSCHRIFT.TTF");
+}
+* {
+  overflow-x: hidden;
+  background-color: #181d21;
+}
+
+.grid {
+  display: grid;
+  height: 110vh;
+  width: 100vw;
+  grid-template-columns: auto;
+  grid-template-rows: 13% auto 5%;
+  row-gap: 2vh;
+}
+
+.navFlex {
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row;
+  width: 100%;
+}
+.navFlex ul {
+  display: flex;
+  width: auto;
+  align-items: center;
+  margin: 6vh 0 0 5vh;
+}
+.navFlex ul li {
+  flex-shrink: 0;
+  margin-right: 3vh;
+  margin-left: 3vh;
+  font-size: 1.8vh;
+  list-style: none;
+  font-family: bahn;
+  color: white;
+}
+.navFlex ul li:hover {
+  transform: scale(1.2);
+}
+
+.logo {
+  width: 50vh;
+  margin: 1vh 3vh 0 0;
+}
+
+.contentFlex {
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.buttonFlex {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.buttons__add {
+  margin-right: 5%;
+  border: none;
+  width: 4%;
+  border-radius: 30px;
+  background-color: #3D464c;
+  color: white;
+  font-family: bahn;
+  font-size: 1vw;
+}
+
+.buttons__add:hover {
+  background-color: #10964f;
+}
+
+.cardFlex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 9.5%;
+  color: white;
+}
+.cardFlex li {
+  list-style: none;
+}
+.cardFlex li:hover {
+  transform: scale(1.1);
+  padding: 1.8%;
+}
+
+.card {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: flex-start;
+  list-style: none;
+  background-color: #3D464C;
+  border-radius: 50px;
+  height: 58vh;
+  width: 18vw;
+  min-width: 315px;
+  min-height: 514px;
+}
+
+.card__image {
+  margin-top: 5%;
+  border-radius: 25px;
+  height: 38vh;
+  width: 13vw;
+  min-height: 326px;
+  min-width: 202px;
+}
+
+.card__text {
+  text-align: left;
+  font-family: bahn;
+  font-size: 2vh;
+  margin: 8% 6% 0 6%;
+  background-color: #3D464C;
+}
+
+.card__button--background {
+  display: flex;
+  justify-content: center;
+  align-self: flex-end;
+  margin: 2vh 1.5vw 0 0;
+  border-radius: 30px;
+  background-color: #5C6871;
+  border: none;
+}
+
+.card__button {
+  position: relative;
+  bottom: 8px;
+  width: 4vw;
+  height: auto;
+  min-width: 54px;
+  min-height: 41px;
+  font-size: 2vw;
+  background-color: transparent;
+  color: white;
+  border: none;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  color: white;
+}
+
+#message {
+  height: 35vh;
+  font-family: bahn;
+  color: #585c5e;
+}
+
+#message:hover {
+  padding: 0%;
+  transform: none;
+}
+
+@media screen and (max-width: 1200px) {
+  .card {
+    min-width: 150px;
+    min-height: 375px;
+    width: 300px;
+    height: 500px;
+  }
+}
+
+/*# sourceMappingURL=index.css.map */
