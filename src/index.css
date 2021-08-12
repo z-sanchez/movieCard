@@ -61,18 +61,19 @@
 .buttonFlex {
   display: flex;
   justify-content: flex-end;
-  width: 100%;
+  width: auto;
 }
 
 .buttons__add {
   margin-right: 5%;
   border: none;
-  width: 4%;
+  min-height: 18px;
+  width: 4vw;
   border-radius: 30px;
   background-color: #3D464c;
   color: white;
   font-family: bahn;
-  font-size: 1vw;
+  font-size: 2vh;
 }
 
 .buttons__add:hover {
@@ -172,6 +173,129 @@
     min-height: 375px;
     width: 300px;
     height: 500px;
+  }
+}
+@media screen and (max-height: 830px) {
+  .cardFlex {
+    margin-bottom: 5vh;
+  }
+
+  .card {
+    min-width: 150px;
+    min-height: 375px;
+    width: 300px;
+    height: 500px;
+  }
+}
+@media screen and (max-height: 600px) {
+  .cardFlex {
+    margin-bottom: 10px;
+  }
+  .cardFlex li {
+    list-style: none;
+  }
+  .cardFlex li:hover {
+    transform: none;
+    padding: 0%;
+  }
+
+  .card {
+    min-width: 150px;
+    min-height: 450px;
+    width: 280px;
+    height: 450px;
+  }
+
+  .card__button--background {
+    background-color: none;
+  }
+
+  .card__button {
+    position: relative;
+    bottom: 8px;
+    width: 5px;
+    font-size: auto;
+  }
+}
+@media screen and (max-height: 575px) {
+  .grid {
+    height: auto;
+    width: 1825px;
+    grid-template-rows: 10% auto auto;
+  }
+
+  .navFlex {
+    width: 100%;
+  }
+  .navFlex ul {
+    margin: 6vh 0 0 30px;
+  }
+  .navFlex ul li {
+    margin-right: 3vh;
+    margin-left: 3vh;
+    font-size: 10px;
+  }
+
+  .logo {
+    width: 275px;
+  }
+
+  .contentFlex {
+    width: 100%;
+  }
+
+  .buttonFlex {
+    width: auto;
+  }
+
+  .buttons__add {
+    margin-right: 5%;
+    min-height: 18px;
+    width: 70px;
+    font-size: 15px;
+  }
+
+  .cardFlex {
+    width: 100%;
+    margin-bottom: 0%;
+  }
+  .cardFlex li:hover {
+    transform: scale(1.1);
+    padding: 1.8%;
+  }
+
+  .card {
+    height: 300px;
+    width: 275px;
+    margin: 50px 0 0 0;
+  }
+
+  .card__image {
+    margin-top: 5%;
+    height: 38vh;
+    width: 13vw;
+    min-height: 326px;
+    min-width: 202px;
+  }
+
+  .card__text {
+    font-size: 2vh;
+    margin: 8% 6% 0 6%;
+  }
+
+  .card__button--background {
+    margin: 2vh 1.5vw 0 0;
+    border-radius: 30px;
+  }
+
+  .card__button {
+    position: relative;
+    bottom: 8px;
+    width: 4vw;
+    height: auto;
+    min-width: 54px;
+    min-height: 41px;
+    font-size: 2vw;
   }
 }
 
