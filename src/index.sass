@@ -4,6 +4,12 @@ $bahn-font-path: '../src/fonts/BAHNSCHRIFT.TTF'
     margin: 0
     padding: 0
 
+
+%adding_FlexItems
+    color: white
+    font-family: bahn    
+    align-self: center
+    margin: 5% 5% 5% 5%
     
 @font-face 
     font-family: bahn
@@ -55,7 +61,7 @@ $bahn-font-path: '../src/fonts/BAHNSCHRIFT.TTF'
     display: flex
     flex-flow: column
     width: 100%
-    justify-content: space-between
+
 
 
 .buttonFlex
@@ -83,13 +89,14 @@ $bahn-font-path: '../src/fonts/BAHNSCHRIFT.TTF'
     justify-content: center
     align-items: center
     width: 100%
-    margin-bottom: 9.5%
+    padding-top: 3%
     color: white
     li 
         list-style: none
     li:hover 
         transform: scale(1.1)
         padding: 1.8%
+
 
 
 .card
@@ -100,7 +107,7 @@ $bahn-font-path: '../src/fonts/BAHNSCHRIFT.TTF'
     list-style: none
     background-color: #3D464C
     border-radius: 50px
-    height: 58vh
+    height: 50vh
     width: 18vw
     min-width: 315px
     min-height: 514px
@@ -150,13 +157,92 @@ $bahn-font-path: '../src/fonts/BAHNSCHRIFT.TTF'
 
 
 #message
-    height: 35vh
+    position: relative
+    margin-top: 10%
     font-family: bahn    
     color: #585c5e
 
 #message:hover
     padding: 0%
     transform: none
+
+.fade
+    z-index: 10
+    background-color: black
+    opacity: 0.3
+    width: 100%
+    height: 100%
+    position: fixed
+    top: 0
+    left: 0
+
+.addingWindow
+    position: fixed
+    z-index: 11
+    width: 900px
+    height: 500px
+    bottom: 230px
+    border-radius: 50px
+    align-self: center
+    justify-self: center
+    display: flex
+    flex-flow: column
+
+.addingWindow__title
+    @extend %adding_FlexItems !optional
+    margin-bottom: 2%
+
+
+.addingWindow__poster
+    @extend %adding_FlexItems !optional
+
+#posterFile
+    align-self: center
+    color: white
+    margin-left: 10%
+
+.addingWindow__description
+    @extend %adding_FlexItems !optional
+    margin-bottom: 2%
+
+#fDesc
+    @extend %adding_FlexItems !optional
+    margin: 0
+    background-color: white
+    border-radius: 30px
+    border: none
+    width: 500px
+    height: 100px
+    color: black
+
+#fDesc:focus
+    outline: none
+
+.submit
+    align-self: flex-end
+    width: 8%
+    padding: 3px 0 3px 0
+    margin: 20px 30px 0 0 
+    border: none
+    border-radius: 10px
+    background-color: #5a666e
+    color: white
+    
+.submit:hover
+    background-color: #10964f
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @media screen and ( max-width: 1200px )
     .card

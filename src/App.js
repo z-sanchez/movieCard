@@ -1,6 +1,5 @@
 import React from "react";
 import logo from "./logo.png";
-import movie from "./greenKnight.jpeg";
 
 class App extends React.Component {
   render() {
@@ -33,48 +32,106 @@ class AddCards extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      movieOne: {
-        poster: null,
-        desc: null,
-      },
+      movies: [],
       cardCount: 0,
+      adding: false,
     };
   }
 
   handleAdd = () => {
     this.setState({
-      movieOne: {
-        poster: movie,
-        desc: "A fantasy re-telling of the medieval story of Sir Gawain and the Green Knight.",
-      },
+      adding: true,
+    });
+    const fade = document.createElement("div");
+    fade.classList.add("fade");
+
+    fade.addEventListener("click", this.exitWindow);
+
+    document.querySelector("body").appendChild(fade);
+  };
+
+  exitWindow = () => {
+    this.setState({
+      adding: false,
+    });
+
+    document.querySelector(".fade").remove();
+  };
+
+  handleSubmit = () => {
+    const newMovie = {
+      poster: null,
+      desc: null,
+    };
+    let array = this.state.movies;
+
+    newMovie.poster = document.querySelector("#posterFile").value;
+    newMovie.desc = document.querySelector("#fDesc").value;
+
+    array[this.state.cardCount] = newMovie;
+
+    this.setState({
+      movies: array,
+      adding: false,
       cardCount: this.state.cardCount + 1,
     });
+
+    document.querySelector(".fade").remove();
   };
 
   render() {
-    let movieCard = null;
+    let movieCard = null,
+      window = null;
 
     if (this.state.cardCount !== 0) {
-      movieCard = (
-        <li key={this.state.cardCount}>
-          <div className="card">
-            <img
-              className="card__image"
-              src={this.state.movieOne.poster}
-              alt="movie"
-            ></img>
-            <p className="card__text">{this.state.movieOne.desc}</p>
-            <div className="card__button--background">
-              <button className="card__button">...</button>
+      const movies = this.state.movies;
+      movieCard = movies.map((e, index) => {
+        return (
+          <li key={index}>
+            <div className="card">
+              <img className="card__image" src={e.poster} alt="movie"></img>
+              <p className="card__text">{e.desc}</p>
+              <div className="card__button--background">
+                <button className="card__button">...</button>
+              </div>
             </div>
-          </div>
-        </li>
-      );
+          </li>
+        );
+      });
     } else {
       movieCard = (
         <li id="message" key="abcdef">
           <p id="message">No Movies Entered Yet</p>
         </li>
+      );
+    }
+
+    if (this.state.adding === true) {
+      window = (
+        <div className="addingWindow">
+          <h1 className="addingWindow__title">New Movie</h1>
+          <h2 className="addingWindow__poster">Upload Poster:</h2>
+          <input type="file" id="posterFile"></input>
+          <h2 className="addingWindow__description">Description:</h2>
+          <input type="text" id="fDesc"></input>
+          <input
+            type="submit"
+            className="submit"
+            onClick={this.handleSubmit}
+          ></input>
+        </div>
+      );
+
+      return (
+        <div className="contentFlex">
+          <div className="buttonFlex">
+            <button className="buttons__add" onClick={this.handleAdd}>
+              Add
+            </button>
+          </div>
+          <ul className="cardFlex">{movieCard}</ul>
+          {window}
+        </div>
       );
     }
 
