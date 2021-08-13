@@ -86,22 +86,25 @@ $bahn-font-path: '../src/fonts/BAHNSCHRIFT.TTF'
 
 .cardFlex
     display: flex
+    flex-shrink: 0
     justify-content: center
     align-items: center
     width: 100%
     padding-top: 3%
+    padding-bottom: 3%
     color: white
     li 
         list-style: none
+        margin-right: 7%
+        margin-left: 7%
     li:hover 
         transform: scale(1.1)
-        padding: 1.8%
 
 
 
 .card
     display: flex
-    flex-flow: column
+    flex-flow: column nowrap
     align-items: center
     justify-content: flex-start
     list-style: none
@@ -111,6 +114,7 @@ $bahn-font-path: '../src/fonts/BAHNSCHRIFT.TTF'
     width: 18vw
     min-width: 315px
     min-height: 514px
+
 
 .card__image
     margin-top: 5%
@@ -149,6 +153,10 @@ $bahn-font-path: '../src/fonts/BAHNSCHRIFT.TTF'
     color: white
     border: none
     
+.slider 
+    margin-top: 3%
+    width: 35%
+    align-self: center
 
 .footer
     display: flex
@@ -158,7 +166,7 @@ $bahn-font-path: '../src/fonts/BAHNSCHRIFT.TTF'
 
 #message
     position: relative
-    margin-top: 10%
+    margin-top: 12%
     font-family: bahn    
     color: #585c5e
 

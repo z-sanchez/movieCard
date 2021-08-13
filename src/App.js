@@ -65,7 +65,7 @@ class AddCards extends React.Component {
     };
     let array = this.state.movies;
 
-    newMovie.poster = document.querySelector("#posterFile").value;
+    newMovie.poster = document.querySelector("#posterFile").files[0].name;
     newMovie.desc = document.querySelector("#fDesc").value;
 
     array[this.state.cardCount] = newMovie;
@@ -77,6 +77,16 @@ class AddCards extends React.Component {
     });
 
     document.querySelector(".fade").remove();
+
+    if (this.state.cardCount === 3) {
+      const slider = document.createElement("input");
+      slider.type = "range";
+      slider.min = 1;
+      slider.max = this.state.cardCount + 1;
+      slider.value = 1;
+      slider.classList.add("slider");
+      document.querySelector(".contentFlex").appendChild(slider);
+    }
   };
 
   render() {
@@ -149,27 +159,3 @@ class AddCards extends React.Component {
 }
 
 export default App;
-
-//div for card
-/* <div className="card">
-<img className="card__image" src={movie} alt="movie"></img>
-<p className="card__text">
-  A fantasy re-telling of the medieval story of Sir Gawain and the
-  Green Knight.
-</p>
-<div className="card__button--background">
-  <button className="card__button">...</button>
-</div>
-</div> */
-
-//<p id="message">No Movies Entered Yet</p>
-
-/* <div className="contentFlex">
-          <div className="buttonFlex">
-            <button className="buttons__add">Add</button>
-          </div>
-          <ul className="cardFlex">
-            <li>
-              <p id="message">No Movies Entered Yet</p>
-            </li>
-          </ul> </div> */
