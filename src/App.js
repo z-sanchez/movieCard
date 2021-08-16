@@ -97,9 +97,10 @@ class AddCards extends React.Component {
     slider.max = this.state.cardCount + 1;
     slider.value = 1;
     slider.classList.add("slider");
-    slider.addEventListener("change", (e) => {
+    slider.addEventListener("change", () => {
+      console.log(document.querySelector(".slider").value);
       this.setState({
-        center: e.value,
+        center: document.querySelector(".slider").value,
       });
     });
     document.querySelector(".contentFlex").appendChild(slider);
@@ -114,7 +115,7 @@ class AddCards extends React.Component {
       newMovies[0] = movies[movies.length - 1];
       newMovies[1] = movies[0];
       newMovies[2] = movies[1];
-    } else if (this.state.center === movies.length) {
+    } else if (this.state.center == movies.length) {
       newMovies[0] = movies[movies.length - 2];
       newMovies[1] = movies[movies.length - 1];
       newMovies[2] = movies[0];
