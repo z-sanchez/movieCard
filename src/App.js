@@ -35,6 +35,7 @@ class AddCards extends React.Component {
       movies: [],
       cardCount: 0,
       adding: false,
+      center: 2,
     };
   }
 
@@ -70,31 +71,68 @@ class AddCards extends React.Component {
 
     array[this.state.cardCount] = newMovie;
 
+    this.sliderAdd();
+
+    document.querySelector(".fade").remove();
+
     this.setState({
       movies: array,
       adding: false,
       cardCount: this.state.cardCount + 1,
     });
-
-    document.querySelector(".fade").remove();
-
-    if (this.state.cardCount >= 3) {
-      const slider = document.createElement("input");
-      slider.type = "range";
-      slider.min = 1;
-      slider.max = this.state.cardCount + 1;
-      slider.value = 1;
-      slider.classList.add("slider");
-      document.querySelector(".contentFlex").appendChild(slider);
-    }
   };
 
+  sliderAdd = () => {
+    if (this.state.cardCount + 1 === 4) {
+      this.sliderOn();
+    } else if (this.state.cardCount + 1 >= 5)
+      document.querySelector(".slider").max = this.state.cardCount + 1;
+    else return;
+  };
+
+  sliderOn = () => {
+    const slider = document.createElement("input");
+    slider.type = "range";
+    slider.min = 1;
+    slider.max = this.state.cardCount + 1;
+    slider.value = 1;
+    slider.classList.add("slider");
+    slider.addEventListener("change", (e) => {
+      this.setState({
+        center: e.value,
+      });
+    });
+    document.querySelector(".contentFlex").appendChild(slider);
+  };
+
+  renderCards = (movies) => {
+    let newMovies = [null];
+
+    if (movies.length < 4) return movies;
+
+    if (this.state.center - 1 === 0) {
+      newMovies[0] = movies[movies.length - 1];
+      newMovies[1] = movies[0];
+      newMovies[2] = movies[1];
+    } else if (this.state.center === movies.length) {
+      newMovies[0] = movies[movies.length - 2];
+      newMovies[1] = movies[movies.length - 1];
+      newMovies[2] = movies[0];
+    } else {
+      newMovies[0] = movies[this.state.center - 2];
+      newMovies[1] = movies[this.state.center - 1];
+      newMovies[2] = movies[this.state.center];
+    }
+
+    return newMovies;
+  };
   render() {
     let movieCard = null,
       window = null;
 
     if (this.state.cardCount !== 0) {
-      const movies = this.state.movies;
+      let movies = this.state.movies;
+      movies = this.renderCards(movies);
       movieCard = movies.map((e, index) => {
         return (
           <li key={index}>
@@ -111,11 +149,10 @@ class AddCards extends React.Component {
     } else {
       movieCard = (
         <li id="message" key="abcdef">
-          <p id="message">No Movies Entered Yet</p>
+          <p id="message">No Movies Entered</p>
         </li>
       );
     }
-
     if (this.state.adding === true) {
       window = (
         <div className="addingWindow">
