@@ -78,7 +78,7 @@ class AddCards extends React.Component {
 
     document.querySelector(".fade").remove();
 
-    if (this.state.cardCount === 3) {
+    if (this.state.cardCount >= 3) {
       const slider = document.createElement("input");
       slider.type = "range";
       slider.min = 1;
