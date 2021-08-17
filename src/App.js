@@ -98,7 +98,6 @@ class AddCards extends React.Component {
     slider.value = 1;
     slider.classList.add("slider");
     slider.addEventListener("change", () => {
-      console.log(document.querySelector(".slider").value);
       this.setState({
         center: document.querySelector(".slider").value,
       });
@@ -127,35 +126,10 @@ class AddCards extends React.Component {
 
     return newMovies;
   };
-  render() {
-    let movieCard = null,
-      window = null;
 
-    if (this.state.cardCount !== 0) {
-      let movies = this.state.movies;
-      movies = this.renderCards(movies);
-      movieCard = movies.map((e, index) => {
-        return (
-          <li key={index}>
-            <div className="card">
-              <img className="card__image" src={e.poster} alt="movie"></img>
-              <p className="card__text">{e.desc}</p>
-              <div className="card__button--background">
-                <button className="card__button">...</button>
-              </div>
-            </div>
-          </li>
-        );
-      });
-    } else {
-      movieCard = (
-        <li id="message" key="abcdef">
-          <p id="message">No Movies Entered</p>
-        </li>
-      );
-    }
+  renderWindow = () => {
     if (this.state.adding === true) {
-      window = (
+      return (
         <div className="addingWindow">
           <h1 className="addingWindow__title">New Movie</h1>
           <h2 className="addingWindow__poster">Upload Poster:</h2>
@@ -169,19 +143,30 @@ class AddCards extends React.Component {
           ></input>
         </div>
       );
+    } else return;
+  };
+  render() {
+    let movieCard = null,
+      window = null;
 
-      return (
-        <div className="contentFlex">
-          <div className="buttonFlex">
-            <button className="buttons__add" onClick={this.handleAdd}>
-              Add
-            </button>
-          </div>
-          <ul className="cardFlex">{movieCard}</ul>
-          {window}
-        </div>
+    if (this.state.cardCount !== 0) {
+      let movies = this.state.movies;
+      movies = this.renderCards(movies);
+      movieCard = movies.map((e, index) => {
+        return (
+          <li key={index}>
+            <Card poster={e.poster} desc={e.desc} />
+          </li>
+        );
+      });
+    } else {
+      movieCard = (
+        <li id="message" key="abcdef">
+          <p id="message">No Movies Entered</p>
+        </li>
       );
     }
+    window = this.renderWindow();
 
     return (
       <div className="contentFlex">
@@ -191,9 +176,64 @@ class AddCards extends React.Component {
           </button>
         </div>
         <ul className="cardFlex">{movieCard}</ul>
+        {window}
       </div>
     );
   }
 }
 
+class Card extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      detailsOn: false,
+    };
+  }
+  handleClick = () => {
+    if (this.state.detailsOn === false) {
+      this.setState({ detailsOn: true });
+      const fade = document.createElement("div");
+      fade.classList.add("fade");
+      fade.addEventListener("click", this.exitWindow);
+      document.querySelector("body").appendChild(fade);
+    }
+  };
+
+  exitWindow = (e) => {};
+
+  render() {
+    if (this.state.detailsOn === true) {
+      return (
+        <div className="card--details">
+          <h1 className="card__title--details">THE GREEN KNIGHT</h1>
+          <p className="card__text--details">{this.props.desc}</p>
+          <p className="card__info--details">
+            Director: Fuck <br></br> Cast: Fuck, Fuck, Fuck <br></br>
+          </p>
+          <div className="card__button--background">
+            <button className="card__button" onClick={this.handleClick}>
+              ...
+            </button>
+          </div>
+        </div>
+      );
+    } else {
+      return (
+        <div className="card">
+          <img
+            className="card__image"
+            src={this.props.poster}
+            alt="movie"
+          ></img>
+          <p className="card__text">{this.props.desc}</p>
+          <div className="card__button--background">
+            <button className="card__button" onClick={this.handleClick}>
+              ...
+            </button>
+          </div>
+        </div>
+      );
+    }
+  }
+}
 export default App;
