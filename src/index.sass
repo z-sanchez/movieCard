@@ -307,6 +307,9 @@ $bahn-font-path: '../src/fonts/BAHNSCHRIFT.TTF'
 
 
 
+
+
+
 @media screen and ( max-width: 1200px )
     .card
         min-width: 150px
@@ -325,108 +328,80 @@ $bahn-font-path: '../src/fonts/BAHNSCHRIFT.TTF'
         height: 500px
 
 
-
-@media screen and ( max-height: 600px )
-    .cardFlex
-        margin-bottom: 10px
-        li 
-            list-style: none
-        li:hover 
-            transform: none
-            padding: 0%
-
-          
-    
-    .card
-        min-width: 150px
-        min-height: 450px
-        width: 280px
-        height: 450px
-    
-    .card__button--background
-        background-color: none
-
-    
-    .card__button
-        position: relative
-        bottom: 8px
-        width: 5px
-        font-size: auto
-
-
-
-
-@media screen and ( max-height: 575px )
+@media screen and ( max-height: 777px )
     .grid
-        height: auto
-        width: 1825px
-        grid-template-rows: 10% auto auto
+        display: grid
+        height: 110vh
+        width: 100vw
+        grid-template-columns: auto
+        grid-template-rows: 100px 800px 50px
+        row-gap: 1px
+   
 
     .navFlex
+        display: flex
+        justify-content: space-between
+        flex-flow: row
         width: 100%
         ul
-            margin: 6vh 0 0 30px 
-            li
-                margin-right: 3vh
-                margin-left: 3vh
-                font-size: 10px
-    
+            display: flex
+            flex-shrink: 0
+            width: 500px
+            align-items: center
+            margin: 6vh 0 0 5vh 
+        li
+            height: 30px
+            margin-right: 10px
+            margin-left: 10px
+            list-style: none
+            font-family: bahn   
+            color: white
+            h2
+                font-size: 20px
+        li:hover
+            transform: scale(1.2)
+
+
     .logo
-        width: 275px
-    
-    .contentFlex
-        width: 100%
+        flex-shrink: 0
+        width: 20%
+        margin: 10px 30px 0px 200px
 
     .buttonFlex
+        display: flex
+        justify-content: flex-end
         width: auto
+        margin-top: 2px
+        margin-bottom: 2px
+        height: 20px
 
     .buttons__add
         margin-right: 5%
+        border: none
         min-height: 18px
-        width: 70px
+        width: 4vw
+        border-radius: 30px
+        background-color: #3D464c
+        color: white
+        font-family: bahn    
         font-size: 15px
 
     .cardFlex
+        display: flex
+        flex-shrink: 0
+        justify-content: center
+        align-items: center
         width: 100%
-        margin-bottom: 0%
-
-        li:hover 
-            transform: scale(1.1)
-            padding: 1.8%
-
-
-    .card
-        height: 300px
-        width: 275px
-        margin: 50px 0 0 0
-
-    .card__image
-        margin-top: 5%
-        height: 38vh
-        width: 13vw
-        min-height: 326px
-        min-width: 202px
-
-    .card__text
-        font-size: 2vh
-        margin: 8% 6% 0 6%
-
-    .card__button--background
-        margin: 2vh 1.5vw 0 0
-        border-radius: 30px
-
-
-    .card__button
-        position: relative
-        bottom: 8px
-        width: 4vw
-        height: auto
-        min-width: 54px
-        min-height: 41px
-        font-size: 2vw
-
-
-
+        padding-top: 10px
+        padding-bottom: 10px
+        margin-top: 5px
+        color: white
+        li 
+            list-style: none
+            margin-right: 7%
+            margin-left: 7%
+        .card__listItem:hover 
+            transform: none
 
 
 
