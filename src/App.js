@@ -204,7 +204,7 @@ class Card extends React.Component {
   render() {
     if (this.state.detailsOn === true) {
       return (
-        <li className="card_listItem--details">
+        <li className="card__listItem--details">
           <div className="card--details">
             <h1 className="card__title--details">THE GREEN KNIGHT</h1>
             <p className="card__text--details">{this.props.desc}</p>
@@ -228,7 +228,7 @@ class Card extends React.Component {
       );
     } else {
       return (
-        <li>
+        <li className="card__listItem">
           <div className="card">
             <img
               className="card__image"

@@ -101,7 +101,7 @@
   margin-right: 7%;
   margin-left: 7%;
 }
-.cardFlex li:hover {
+.cardFlex .card__listItem:hover {
   transform: scale(1.1);
 }
 
@@ -250,23 +250,21 @@
   background-color: #10964f;
 }
 
-.card_listItem--details {
+.card__listItem--details {
   z-index: 12;
   width: 332.635px;
   height: 514px;
   background-color: #111417;
   border: none;
+  border-radius: 50px;
+  transform: scale(1.1);
 }
-.card_listItem--details .card__button--background {
+.card__listItem--details .card__button--background {
   margin-top: auto;
   margin-bottom: 10%;
 }
 
-.card_listItem--details:hover {
-  transform: none;
-}
-
-/* FIX TRANSFORMIGN ISSUE flex box may have priority, YELLOW STARS ADD WITH FUNCITONALITY*/
+/*YELLOW STARS ADD WITH FUNCITONALITY*/
 .card--details {
   display: flex;
   flex-flow: column nowrap;
@@ -304,6 +302,7 @@
   width: 50px;
   background-color: #3D464C;
 }
+
 .card__info--details {
   width: 80%;
   background-color: #3D464C;

@@ -97,7 +97,7 @@ $bahn-font-path: '../src/fonts/BAHNSCHRIFT.TTF'
         list-style: none
         margin-right: 7%
         margin-left: 7%
-    li:hover 
+    .card__listItem:hover 
         transform: scale(1.1)
 
 
@@ -241,20 +241,21 @@ $bahn-font-path: '../src/fonts/BAHNSCHRIFT.TTF'
 
 
 
-.card_listItem--details
+.card__listItem--details
     z-index: 12
     width: 332.635px
     height: 514px
     background-color: #111417
     border: none
+    border-radius: 50px
+    transform: scale(1.1)
     .card__button--background
         margin-top: auto
         margin-bottom: 10%
 
-.card_listItem--details:hover
-    transform: none
 
-/* FIX TRANSFORMIGN ISSUE flex box may have priority, YELLOW STARS ADD WITH FUNCITONALITY*/
+
+/*YELLOW STARS ADD WITH FUNCITONALITY*/
 
 .card--details
     display: flex
@@ -289,7 +290,6 @@ $bahn-font-path: '../src/fonts/BAHNSCHRIFT.TTF'
     img 
         width: 50px
         background-color: #3D464C
-    img:hover
         
 
 
