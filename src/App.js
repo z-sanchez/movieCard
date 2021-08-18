@@ -1,5 +1,6 @@
 import React from "react";
 import logo from "./logo.png";
+import star from "./star.png";
 
 class App extends React.Component {
   render() {
@@ -153,11 +154,7 @@ class AddCards extends React.Component {
       let movies = this.state.movies;
       movies = this.renderCards(movies);
       movieCard = movies.map((e, index) => {
-        return (
-          <li key={index}>
-            <Card poster={e.poster} desc={e.desc} />
-          </li>
-        );
+        return <Card poster={e.poster} desc={e.desc} key={index} />;
       });
     } else {
       movieCard = (
@@ -195,43 +192,57 @@ class Card extends React.Component {
       const fade = document.createElement("div");
       fade.classList.add("fade");
       fade.addEventListener("click", this.exitWindow);
-      document.querySelector("body").appendChild(fade);
-    }
+      document.querySelector(".cardFlex").appendChild(fade);
+    } else this.exitWindow();
   };
 
-  exitWindow = (e) => {};
+  exitWindow = () => {
+    document.querySelector(".fade").remove();
+    this.setState({ detailsOn: false });
+  };
 
   render() {
     if (this.state.detailsOn === true) {
       return (
-        <div className="card--details">
-          <h1 className="card__title--details">THE GREEN KNIGHT</h1>
-          <p className="card__text--details">{this.props.desc}</p>
-          <p className="card__info--details">
-            Director: Fuck <br></br> Cast: Fuck, Fuck, Fuck <br></br>
-          </p>
-          <div className="card__button--background">
-            <button className="card__button" onClick={this.handleClick}>
-              ...
-            </button>
+        <li className="card_listItem--details">
+          <div className="card--details">
+            <h1 className="card__title--details">THE GREEN KNIGHT</h1>
+            <p className="card__text--details">{this.props.desc}</p>
+            <div className="starFlex">
+              <img src={star} alt="star"></img>
+              <img src={star} alt="star"></img>
+              <img src={star} alt="star"></img>
+              <img src={star} alt="star"></img>
+              <img src={star} alt="star"></img>
+            </div>
+            <p className="card__info--details">
+              Director: Fuck <br></br> Cast: Fuck, Fuck, Fuck <br></br>
+            </p>
+            <div className="card__button--background">
+              <button className="card__button" onClick={this.handleClick}>
+                ...
+              </button>
+            </div>
           </div>
-        </div>
+        </li>
       );
     } else {
       return (
-        <div className="card">
-          <img
-            className="card__image"
-            src={this.props.poster}
-            alt="movie"
-          ></img>
-          <p className="card__text">{this.props.desc}</p>
-          <div className="card__button--background">
-            <button className="card__button" onClick={this.handleClick}>
-              ...
-            </button>
+        <li>
+          <div className="card">
+            <img
+              className="card__image"
+              src={this.props.poster}
+              alt="movie"
+            ></img>
+            <p className="card__text">{this.props.desc}</p>
+            <div className="card__button--background">
+              <button className="card__button" onClick={this.handleClick}>
+                ...
+              </button>
+            </div>
           </div>
-        </div>
+        </li>
       );
     }
   }

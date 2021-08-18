@@ -240,6 +240,22 @@ $bahn-font-path: '../src/fonts/BAHNSCHRIFT.TTF'
     background-color: #10964f
 
 
+
+.card_listItem--details
+    z-index: 12
+    width: 332.635px
+    height: 514px
+    background-color: #111417
+    border: none
+    .card__button--background
+        margin-top: auto
+        margin-bottom: 10%
+
+.card_listItem--details:hover
+    transform: none
+
+/* FIX TRANSFORMIGN ISSUE flex box may have priority, YELLOW STARS ADD WITH FUNCITONALITY*/
+
 .card--details
     display: flex
     flex-flow: column nowrap
@@ -254,6 +270,34 @@ $bahn-font-path: '../src/fonts/BAHNSCHRIFT.TTF'
     min-height: 514px
 
 
+.card__title--details
+    width: 93%
+    margin: 5% 3% 10% 3%
+    text-align: center
+    font-size: 25px
+    font-family: bahn   
+    background-color: #3D464C
+
+.card__text--details
+    width: 80%
+    background-color: #3D464C
+    
+.starFlex
+    display: flex
+    margin: 10% 0 10% 0
+    background-color: #3D464C
+    img 
+        width: 50px
+        background-color: #3D464C
+    img:hover
+        
+
+
+.card__info--details
+    width: 80%
+    background-color: #3D464C
+    p
+        margin: 5%
 
 
 
