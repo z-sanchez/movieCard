@@ -201,36 +201,32 @@ $bahn-font-path: '../src/fonts/BAHNSCHRIFT.TTF'
     margin-bottom: 2%
 
 
-.addingWindow__poster
+.addingWindow__findMovie
     @extend %adding_FlexItems !optional
+    margin: 10% 0 3% 0
 
-#posterFile
-    align-self: center
-    color: white
-    margin-left: 10%
-
-.addingWindow__description
+#movieInput
     @extend %adding_FlexItems !optional
-    margin-bottom: 2%
-
-#fDesc
-    @extend %adding_FlexItems !optional
-    margin: 0
+    margin-top: 0
     background-color: white
     border-radius: 30px
     border: none
     width: 500px
-    height: 100px
+    height: 50px
     color: black
 
-#fDesc:focus
+input[type=text]
+    padding-left: 10px
+    font-size: 20px
+
+#movieInput:focus
     outline: none
 
 .submit
     align-self: flex-end
     width: 8%
     padding: 3px 0 3px 0
-    margin: 20px 30px 0 0 
+    margin: auto 30px 5% 0 
     border: none
     border-radius: 10px
     background-color: #5a666e

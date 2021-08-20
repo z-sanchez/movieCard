@@ -3,7 +3,7 @@
   padding: 0;
 }
 
-#fDesc, .addingWindow__description, .addingWindow__poster, .addingWindow__title {
+#movieInput, .addingWindow__findMovie, .addingWindow__title {
   color: white;
   font-family: bahn;
   align-self: center;
@@ -211,27 +211,26 @@
   margin-bottom: 2%;
 }
 
-#posterFile {
-  align-self: center;
-  color: white;
-  margin-left: 10%;
+.addingWindow__findMovie {
+  margin: 10% 0 3% 0;
 }
 
-.addingWindow__description {
-  margin-bottom: 2%;
-}
-
-#fDesc {
-  margin: 0;
+#movieInput {
+  margin-top: 0;
   background-color: white;
   border-radius: 30px;
   border: none;
   width: 500px;
-  height: 100px;
+  height: 50px;
   color: black;
 }
 
-#fDesc:focus {
+input[type=text] {
+  padding-left: 10px;
+  font-size: 20px;
+}
+
+#movieInput:focus {
   outline: none;
 }
 
@@ -239,7 +238,7 @@
   align-self: flex-end;
   width: 8%;
   padding: 3px 0 3px 0;
-  margin: 20px 30px 0 0;
+  margin: auto 30px 5% 0;
   border: none;
   border-radius: 10px;
   background-color: #5a666e;

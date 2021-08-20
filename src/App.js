@@ -2,9 +2,13 @@ import React from "react";
 import logo from "./logo.png";
 import unfilledStar from "./unfilledStar.png";
 import filledStar from "./filledStar.png";
+import { getConfig } from "./tmdbFunctions";
+
+import { APIkey, baseURL, configData, baseImageURL } from "./tmdbFunctions";
 
 class App extends React.Component {
   render() {
+    getConfig();
     return (
       <div className="grid">
         <nav className="navFlex">
@@ -64,24 +68,44 @@ class AddCards extends React.Component {
   handleSubmit = () => {
     const newMovie = {
       poster: null,
+      title: null,
       desc: null,
     };
     let array = this.state.movies;
-
-    newMovie.poster = document.querySelector("#posterFile").files[0].name;
-    newMovie.desc = document.querySelector("#fDesc").value;
-
-    array[this.state.cardCount] = newMovie;
+    let movie = document.querySelector("#movieInput").value;
+    let url = "".concat(
+      baseURL,
+      "search/movie?api_key=",
+      APIkey,
+      "&query=",
+      movie
+    );
+    fetch(url)
+      .then((result) => result.json())
+      .then((data) => {
+        let posterPath = data.results[0].poster_path;
+        newMovie.poster = "".concat(
+          baseImageURL,
+          configData.poster_sizes[6],
+          posterPath
+        );
+        console.log(newMovie.poster);
+        newMovie.title = data.results[0].title;
+        newMovie.desc = data.results[0].overview;
+        array[this.state.cardCount] = newMovie;
+        this.setState({
+          movies: array,
+          adding: false,
+          cardCount: this.state.cardCount + 1,
+        });
+      })
+      .catch((err) => {
+        console.log("FAILED TO FIND MOVIE");
+      });
 
     this.sliderAdd();
 
     document.querySelector(".fade").remove();
-
-    this.setState({
-      movies: array,
-      adding: false,
-      cardCount: this.state.cardCount + 1,
-    });
   };
 
   sliderAdd = () => {
@@ -134,10 +158,8 @@ class AddCards extends React.Component {
       return (
         <div className="addingWindow">
           <h1 className="addingWindow__title">New Movie</h1>
-          <h2 className="addingWindow__poster">Upload Poster:</h2>
-          <input type="file" id="posterFile"></input>
-          <h2 className="addingWindow__description">Description:</h2>
-          <input type="text" id="fDesc"></input>
+          <h2 className="addingWindow__findMovie">Search:</h2>
+          <input type="text" id="movieInput"></input>
           <input
             type="submit"
             className="submit"
@@ -155,7 +177,9 @@ class AddCards extends React.Component {
       let movies = this.state.movies;
       movies = this.renderCards(movies);
       movieCard = movies.map((e, index) => {
-        return <Card poster={e.poster} desc={e.desc} key={index} />;
+        return (
+          <Card poster={e.poster} title={e.title} desc={e.desc} key={index} />
+        );
       });
     } else {
       movieCard = (
@@ -252,7 +276,7 @@ class Card extends React.Component {
       return (
         <li className="card__listItem--details">
           <div className="card--details">
-            <h1 className="card__title--details">THE GREEN KNIGHT</h1>
+            <h1 className="card__title--details">{this.props.title}</h1>
             <p className="card__text--details">{this.props.desc}</p>
             <div className="starFlex">
               <img
@@ -316,7 +340,7 @@ class Card extends React.Component {
               src={this.props.poster}
               alt="movie"
             ></img>
-            <p className="card__text">{this.props.desc}</p>
+            <p className="card__text">{this.props.title}</p>
             <div className="card__button--background">
               <button className="card__button" onClick={this.handleClick}>
                 ...
