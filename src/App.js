@@ -89,7 +89,6 @@ class AddCards extends React.Component {
           configData.poster_sizes[6],
           posterPath
         );
-        console.log(newMovie.poster);
         newMovie.title = data.results[0].title;
         newMovie.desc = data.results[0].overview;
         array[this.state.cardCount] = newMovie;
@@ -277,7 +276,9 @@ class Card extends React.Component {
         <li className="card__listItem--details">
           <div className="card--details">
             <h1 className="card__title--details">{this.props.title}</h1>
-            <p className="card__text--details">{this.props.desc}</p>
+            <p className="card__text--details">
+              {truncateText(this.props.desc)}
+            </p>
             <div className="starFlex">
               <img
                 id="1"
@@ -353,3 +354,11 @@ class Card extends React.Component {
   }
 }
 export default App;
+
+function truncateText(text) {
+  if (text.length > 197) {
+    text = text.slice(0, 150);
+    text += "...";
+  }
+  return text;
+}

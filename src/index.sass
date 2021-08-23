@@ -1,403 +1,440 @@
-$bahn-font-path: '../src/fonts/BAHNSCHRIFT.TTF'
+*  
+  margin: 0   
+  padding: 0   
+  
 
-%kill_space 
-    margin: 0
-    padding: 0
+#movieInput, .addingWindow__findMovie, .addingWindow__title  
+  color: white   
+  font-family: bahn   
+  align-self: center   
+  margin: 5% 5% 5% 5%   
+  
 
+@font-face  
+  font-family: bahn   
+  src: url("../src/fonts/BAHNSCHRIFT.TTF")   
+  
+*  
+  overflow-x: hidden   
+  background-color: #181d21   
+  
 
-%adding_FlexItems
-    color: white
-    font-family: bahn    
-    align-self: center
-    margin: 5% 5% 5% 5%
-    
-@font-face 
-    font-family: bahn
-    src: url('#{$bahn-font-path}')
+.grid  
+  display: grid   
+  height: 110vh   
+  width: 100vw   
+  grid-template-columns: auto   
+  grid-template-rows: 13% auto 5%   
+  row-gap: 2vh   
+  
 
-*
-    @extend %kill_space !optional
-    overflow-x: hidden
-    background-color: #181d21
+.navFlex  
+  display: flex   
+  justify-content: space-between   
+  flex-flow: row   
+  width: 100%   
+  
 
-.grid
-    display: grid
-    height: 110vh
-    width: 100vw
-    grid-template-columns: auto
-    grid-template-rows: 13% auto 5%
-    row-gap: 2vh
-   
+.navFlex ul  
+  display: flex   
+  width: auto   
+  align-items: center   
+  margin: 6vh 0 0 5vh   
+  
 
-.navFlex
-    display: flex
-    justify-content: space-between
-    flex-flow: row
-    width: 100%
-    ul
-        display: flex
-        width: auto
-        align-items: center
-        margin: 6vh 0 0 5vh 
-        li
-            flex-shrink: 0
-            margin-right: 3vh
-            margin-left: 3vh
-            font-size: 1.8vh
-            list-style: none
-            font-family: bahn   
-            color: white
-        li:hover
-            transform: scale(1.2)
+.navFlex ul li  
+  flex-shrink: 0   
+  margin-right: 3vh   
+  margin-left: 3vh   
+  font-size: 1.8vh   
+  list-style: none   
+  font-family: bahn   
+  color: white   
+  
 
+.navFlex ul li:hover  
+  transform: scale(1.2)   
+  
 
-.logo
-    width: 50vh
-    margin: 1vh 3vh 0 0
+.logo  
+  width: 50vh   
+  margin: 1vh 3vh 0 0   
+  
 
+.contentFlex  
+  display: flex   
+  flex-flow: column   
+  width: 100%   
+  
 
+.buttonFlex  
+  display: flex   
+  justify-content: flex-end   
+  width: auto   
+  
 
-.contentFlex
-    display: flex
-    flex-flow: column
-    width: 100%
+.buttons__add  
+  margin-right: 5%   
+  border: none   
+  min-height: 18px   
+  width: 4vw   
+  border-radius: 30px   
+  background-color: #3D464c   
+  color: white   
+  font-family: bahn   
+  font-size: 2vh   
+  
 
+.buttons__add:hover  
+  background-color: #10964f   
+  
 
+.cardFlex  
+  display: flex   
+  flex-shrink: 0   
+  justify-content: center   
+  align-items: center   
+  width: 100%   
+  padding-top: 3%   
+  padding-bottom: 3%   
+  color: white   
+  
 
-.buttonFlex
-    display: flex
-    justify-content: flex-end
-    width: auto
+.cardFlex li  
+  list-style: none   
+  margin-right: 7%   
+  margin-left: 7%   
+  
 
-.buttons__add
-    margin-right: 5%
-    border: none
-    min-height: 18px
-    width: 4vw
-    border-radius: 30px
-    background-color: #3D464c
-    color: white
-    font-family: bahn    
-    font-size: 2vh
+.cardFlex .card__listItem:hover  
+  transform: scale(1.1)   
+  
 
-.buttons__add:hover
-    background-color: #10964f
+.card  
+  display: flex   
+  flex-flow: column nowrap   
+  align-items: center   
+  justify-content: flex-start   
+  list-style: none   
+  background-color: #3D464C   
+  border-radius: 50px   
+  height: 50vh   
+  width: 18vw   
+  min-width: 315px   
+  min-height: 514px   
+  
 
+.card__image  
+  margin-top: 5%   
+  border-radius: 25px   
+  height: 38vh   
+  width: 13vw   
+  min-height: 326px   
+  min-width: 202px   
+  
 
-.cardFlex
-    display: flex
-    flex-shrink: 0
-    justify-content: center
-    align-items: center
-    width: 100%
-    padding-top: 3%
-    padding-bottom: 3%
-    color: white
-    li 
-        list-style: none
-        margin-right: 7%
-        margin-left: 7%
-    .card__listItem:hover 
-        transform: scale(1.1)
+.card__text  
+  text-align: center
+  font-family: bahn  
+  font-size: 2vh
+  width: 250px
+  height: 25px
+  overflow: hidden
+  white-space: nowrap
+  text-overflow: ellipsis
+  margin: 8% 6% 0 6%   
+  background-color: #3D464C   
+  
 
+.card__button--background  
+  display: flex   
+  justify-content: center   
+  align-self: flex-end   
+  margin: 5% 1.5vw 0 0   
+  border-radius: 30px   
+  background-color: #5C6871   
+  border: none   
+  
 
+.card__button  
+  position: relative   
+  bottom: 8px   
+  width: 4vw   
+  height: auto   
+  min-width: 54px   
+  min-height: 41px   
+  font-size: 2vw   
+  background-color: transparent   
+  color: white   
+  border: none   
+  
 
-.card
-    display: flex
-    flex-flow: column nowrap
-    align-items: center
-    justify-content: flex-start
-    list-style: none
-    background-color: #3D464C
-    border-radius: 50px
-    height: 50vh
-    width: 18vw
-    min-width: 315px
-    min-height: 514px
+.slider  
+  margin-top: 3%   
+  width: 35%   
+  align-self: center   
+  
 
+.footer  
+  display: flex   
+  justify-content: center   
+  color: white   
+  
 
-.card__image
-    margin-top: 5%
-    border-radius: 25px
-    height: 38vh
-    width: 13vw
-    min-height: 326px
-    min-width: 202px
+#message  
+  position: relative   
+  margin-top: 12%   
+  font-family: bahn   
+  color: #585c5e   
+  
 
-.card__text
-    text-align: left
-    font-family: bahn
-    font-size: 2vh
-    margin: 8% 6% 0 6%
-    background-color: #3D464C
+#message:hover  
+  padding: 0%   
+  transform: none   
+  
 
-.card__button--background
-    display: flex
-    justify-content: center
-    align-self: flex-end
-    margin: 2vh 1.5vw 0 0
-    border-radius: 30px
-    background-color: #5C6871
-    border: none
+.fade  
+  z-index: 10   
+  background-color: black   
+  opacity: 0.3   
+  width: 100%   
+  height: 100%   
+  position: fixed   
+  top: 0   
+  left: 0   
+  
 
+.addingWindow  
+  position: fixed   
+  z-index: 11   
+  width: 900px   
+  height: 500px   
+  bottom: 230px   
+  border-radius: 50px   
+  align-self: center   
+  justify-self: center   
+  display: flex   
+  flex-flow: column   
+  
 
-.card__button
-    position: relative
-    bottom: 8px
-    width: 4vw
-    height: auto
-    min-width: 54px
-    min-height: 41px
-    font-size: 2vw
-    background-color: transparent 
-    color: white
-    border: none
-    
-.slider 
-    margin-top: 3%
-    width: 35%
-    align-self: center
+.addingWindow__title  
+  margin-bottom: 2%   
+  
 
-.footer
-    display: flex
-    justify-content: center
-    color: white
+.addingWindow__findMovie  
+  margin: 10% 0 3% 0   
+  
 
+#movieInput  
+  margin-top: 0   
+  background-color: white   
+  border-radius: 30px   
+  border: none   
+  width: 500px   
+  height: 50px   
+  color: black   
+  
 
-#message
-    position: relative
-    margin-top: 12%
-    font-family: bahn    
-    color: #585c5e
+input[type=text]  
+  padding-left: 10px   
+  font-size: 20px   
+  
 
-#message:hover
-    padding: 0%
-    transform: none
+#movieInput:focus  
+  outline: none   
+  
 
-.fade
-    z-index: 10
-    background-color: black
-    opacity: 0.3
-    width: 100%
-    height: 100%
-    position: fixed
-    top: 0
-    left: 0
+.submit  
+  align-self: flex-end   
+  width: 8%   
+  padding: 3px 0 3px 0   
+  margin: auto 30px 5% 0   
+  border: none   
+  border-radius: 10px   
+  background-color: #5a666e   
+  color: white   
+  
 
-.addingWindow
-    position: fixed
-    z-index: 11
-    width: 900px
-    height: 500px
-    bottom: 230px
-    border-radius: 50px
-    align-self: center
-    justify-self: center
-    display: flex
-    flex-flow: column
+.submit:hover  
+  background-color: #10964f   
+  
 
-.addingWindow__title
-    @extend %adding_FlexItems !optional
-    margin-bottom: 2%
-
-
-.addingWindow__findMovie
-    @extend %adding_FlexItems !optional
-    margin: 10% 0 3% 0
-
-#movieInput
-    @extend %adding_FlexItems !optional
-    margin-top: 0
-    background-color: white
-    border-radius: 30px
-    border: none
-    width: 500px
-    height: 50px
-    color: black
-
-input[type=text]
-    padding-left: 10px
-    font-size: 20px
-
-#movieInput:focus
-    outline: none
-
-.submit
-    align-self: flex-end
-    width: 8%
-    padding: 3px 0 3px 0
-    margin: auto 30px 5% 0 
-    border: none
-    border-radius: 10px
-    background-color: #5a666e
-    color: white
-    
-.submit:hover
-    background-color: #10964f
-
-
-
-.card__listItem--details
-    z-index: 12
-    width: 332.635px
-    height: 514px
-    background-color: #111417
-    border: none
-    border-radius: 50px
-    transform: scale(1.1)
-    .card__button--background
-        margin-top: auto
-        margin-bottom: 10%
-
-
+.card__listItem--details  
+  z-index: 12   
+  width: 332.635px   
+  height: 514px   
+  background-color: #111417   
+  border: none   
+  border-radius: 50px   
+  transform: scale(1.1)   
+  
 
 /*YELLOW STARS ADD WITH FUNCITONALITY*/
+.card--details  
+  display: flex   
+  flex-flow: column nowrap   
+  align-items: center   
+  justify-content: flex-start   
+  list-style: none   
+  background-color: #3D464C   
+  border-radius: 50px   
+  height: 50vh   
+  width: 18vw   
+  min-width: 315px   
+  min-height: 514px
+  .card__button--background  
+    margin-top: auto
+    margin-bottom: 8%
+  
 
-.card--details
-    display: flex
-    flex-flow: column nowrap
-    align-items: center
-    justify-content: flex-start
-    list-style: none
-    background-color: #3D464C
-    border-radius: 50px
-    height: 50vh
-    width: 18vw
-    min-width: 315px
-    min-height: 514px
+.card__title--details  
+  width: 93%   
+  margin: 5% 3% 10% 3%   
+  text-align: center   
+  font-size: 25px   
+  font-family: bahn   
+  background-color: #3D464C   
+  
 
+.card__text--details  
+  width: 270px
+  height: 90px
+  margin-bottom: 5%
+  background-color: #3D464C
+  
 
-.card__title--details
-    width: 93%
-    margin: 5% 3% 10% 3%
-    text-align: center
-    font-size: 25px
+.starFlex  
+  display: flex   
+  margin: 0 0 10% 0   
+  background-color: #3D464C   
+  
+
+.starFlex img  
+  width: 50px   
+  background-color: #3D464C   
+  
+
+.card__info--details  
+  width: 80%   
+  background-color: #3D464C   
+  
+
+.card__info--details p  
+  margin: 5%   
+
+  
+
+@media screen and (max-width: 1200px)  
+  .card  
+    min-width: 150px   
+    min-height: 375px   
+    width: 300px   
+    height: 500px   
+    
+  
+@media screen and (max-height: 830px)  
+  .cardFlex  
+    margin-bottom: 5vh   
+    
+
+  .card  
+    min-width: 150px   
+    min-height: 375px   
+    width: 300px   
+    height: 500px   
+    
+  
+@media screen and (max-height: 777px)  
+  .grid  
+    display: grid   
+    height: 110vh   
+    width: 100vw   
+    grid-template-columns: auto   
+    grid-template-rows: 100px 800px 50px   
+    row-gap: 1px   
+    
+
+  .navFlex  
+    display: flex   
+    justify-content: space-between   
+    flex-flow: row   
+    width: 100%   
+    
+
+  .navFlex ul  
+    display: flex   
+    flex-shrink: 0   
+    width: 500px   
+    align-items: center   
+    margin: 6vh 0 0 5vh   
+    
+
+  .navFlex li  
+    height: 30px   
+    margin-right: 10px   
+    margin-left: 10px   
+    list-style: none   
     font-family: bahn   
-    background-color: #3D464C
-
-.card__text--details
-    width: 80%
-    background-color: #3D464C
+    color: white   
     
-.starFlex
-    display: flex
-    margin: 10% 0 10% 0
-    background-color: #3D464C
-    img 
-        width: 50px
-        background-color: #3D464C
-        
 
-
-.card__info--details
-    width: 80%
-    background-color: #3D464C
-    p
-        margin: 5%
-
-
-
-
-
-
-
-
-
-
-
-
-@media screen and ( max-width: 1200px )
-    .card
-        min-width: 150px
-        min-height: 375px
-        width: 300px
-        height: 500px
-
-@media screen and ( max-height: 830px )
-    .cardFlex
-        margin-bottom: 5vh
+  .navFlex li h2  
+    font-size: 20px   
     
-    .card
-        min-width: 150px
-        min-height: 375px
-        width: 300px
-        height: 500px
 
+  .navFlex li:hover  
+    transform: scale(1.2)   
+    
 
-@media screen and ( max-height: 777px )
-    .grid
-        display: grid
-        height: 110vh
-        width: 100vw
-        grid-template-columns: auto
-        grid-template-rows: 100px 800px 50px
-        row-gap: 1px
-   
+  .logo  
+    flex-shrink: 0   
+    width: 20%   
+    margin: 10px 30px 0px 200px   
+    
 
-    .navFlex
-        display: flex
-        justify-content: space-between
-        flex-flow: row
-        width: 100%
-        ul
-            display: flex
-            flex-shrink: 0
-            width: 500px
-            align-items: center
-            margin: 6vh 0 0 5vh 
-        li
-            height: 30px
-            margin-right: 10px
-            margin-left: 10px
-            list-style: none
-            font-family: bahn   
-            color: white
-            h2
-                font-size: 20px
-        li:hover
-            transform: scale(1.2)
+  .buttonFlex  
+    display: flex   
+    justify-content: flex-end   
+    width: auto   
+    margin-top: 2px   
+    margin-bottom: 2px   
+    height: 20px   
+    
 
+  .buttons__add  
+    margin-right: 5%   
+    border: none   
+    min-height: 18px   
+    width: 4vw   
+    border-radius: 30px   
+    background-color: #3D464c   
+    color: white   
+    font-family: bahn   
+    font-size: 15px   
+    
 
-    .logo
-        flex-shrink: 0
-        width: 20%
-        margin: 10px 30px 0px 200px
+  .cardFlex  
+    display: flex   
+    flex-shrink: 0   
+    justify-content: center   
+    align-items: center   
+    width: 100%   
+    padding-top: 10px   
+    padding-bottom: 10px   
+    margin-top: 5px   
+    color: white   
+    
 
-    .buttonFlex
-        display: flex
-        justify-content: flex-end
-        width: auto
-        margin-top: 2px
-        margin-bottom: 2px
-        height: 20px
+  .cardFlex li  
+    list-style: none   
+    margin-right: 7%   
+    margin-left: 7%   
+    
 
-    .buttons__add
-        margin-right: 5%
-        border: none
-        min-height: 18px
-        width: 4vw
-        border-radius: 30px
-        background-color: #3D464c
-        color: white
-        font-family: bahn    
-        font-size: 15px
+  .cardFlex .card__listItem:hover  
+    transform: none   
+    
+  
+/*# sourceMappingURL=index.css.map */
 
-    .cardFlex
-        display: flex
-        flex-shrink: 0
-        justify-content: center
-        align-items: center
-        width: 100%
-        padding-top: 10px
-        padding-bottom: 10px
-        margin-top: 5px
-        color: white
-        li 
-            list-style: none
-            margin-right: 7%
-            margin-left: 7%
-        .card__listItem:hover 
-            transform: none
-
-
-
+/*# sourceMappingURL=index.sass.map */

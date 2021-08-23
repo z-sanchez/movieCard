@@ -34,12 +34,14 @@
   flex-flow: row;
   width: 100%;
 }
+
 .navFlex ul {
   display: flex;
   width: auto;
   align-items: center;
   margin: 6vh 0 0 5vh;
 }
+
 .navFlex ul li {
   flex-shrink: 0;
   margin-right: 3vh;
@@ -49,6 +51,7 @@
   font-family: bahn;
   color: white;
 }
+
 .navFlex ul li:hover {
   transform: scale(1.2);
 }
@@ -96,11 +99,13 @@
   padding-bottom: 3%;
   color: white;
 }
+
 .cardFlex li {
   list-style: none;
   margin-right: 7%;
   margin-left: 7%;
 }
+
 .cardFlex .card__listItem:hover {
   transform: scale(1.1);
 }
@@ -129,9 +134,14 @@
 }
 
 .card__text {
-  text-align: left;
+  text-align: center;
   font-family: bahn;
   font-size: 2vh;
+  width: 250px;
+  height: 25px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   margin: 8% 6% 0 6%;
   background-color: #3D464C;
 }
@@ -140,7 +150,7 @@
   display: flex;
   justify-content: center;
   align-self: flex-end;
-  margin: 2vh 1.5vw 0 0;
+  margin: 5% 1.5vw 0 0;
   border-radius: 30px;
   background-color: #5C6871;
   border: none;
@@ -258,10 +268,6 @@ input[type=text] {
   border-radius: 50px;
   transform: scale(1.1);
 }
-.card__listItem--details .card__button--background {
-  margin-top: auto;
-  margin-bottom: 10%;
-}
 
 /*YELLOW STARS ADD WITH FUNCITONALITY*/
 .card--details {
@@ -277,6 +283,10 @@ input[type=text] {
   min-width: 315px;
   min-height: 514px;
 }
+.card--details .card__button--background {
+  margin-top: auto;
+  margin-bottom: 8%;
+}
 
 .card__title--details {
   width: 93%;
@@ -288,15 +298,18 @@ input[type=text] {
 }
 
 .card__text--details {
-  width: 80%;
+  width: 270px;
+  height: 90px;
+  margin-bottom: 5%;
   background-color: #3D464C;
 }
 
 .starFlex {
   display: flex;
-  margin: 10% 0 10% 0;
+  margin: 0 0 10% 0;
   background-color: #3D464C;
 }
+
 .starFlex img {
   width: 50px;
   background-color: #3D464C;
@@ -306,6 +319,7 @@ input[type=text] {
   width: 80%;
   background-color: #3D464C;
 }
+
 .card__info--details p {
   margin: 5%;
 }
@@ -346,6 +360,7 @@ input[type=text] {
     flex-flow: row;
     width: 100%;
   }
+
   .navFlex ul {
     display: flex;
     flex-shrink: 0;
@@ -353,6 +368,7 @@ input[type=text] {
     align-items: center;
     margin: 6vh 0 0 5vh;
   }
+
   .navFlex li {
     height: 30px;
     margin-right: 10px;
@@ -361,9 +377,11 @@ input[type=text] {
     font-family: bahn;
     color: white;
   }
+
   .navFlex li h2 {
     font-size: 20px;
   }
+
   .navFlex li:hover {
     transform: scale(1.2);
   }
@@ -406,14 +424,18 @@ input[type=text] {
     margin-top: 5px;
     color: white;
   }
+
   .cardFlex li {
     list-style: none;
     margin-right: 7%;
     margin-left: 7%;
   }
+
   .cardFlex .card__listItem:hover {
     transform: none;
   }
 }
+/*# sourceMappingURL=index.css.map */
+/*# sourceMappingURL=index.sass.map */
 
 /*# sourceMappingURL=index.css.map */
