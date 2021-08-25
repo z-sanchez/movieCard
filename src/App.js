@@ -2,7 +2,7 @@ import React from "react";
 import logo from "./logo.png";
 import unfilledStar from "./unfilledStar.png";
 import filledStar from "./filledStar.png";
-import { getConfig } from "./tmdbFunctions";
+import { getConfig, getMore } from "./tmdbFunctions";
 
 import { APIkey, baseURL, configData, baseImageURL } from "./tmdbFunctions";
 
@@ -66,40 +66,76 @@ class AddCards extends React.Component {
   };
 
   handleSubmit = () => {
-    const newMovie = {
+    var newMovie = {
+      search: null,
       poster: null,
       title: null,
       desc: null,
+      actors: null,
+      directors: null,
+      ratings: null,
+      release: null,
+      imdb: null,
+      runtime: null,
     };
-    let array = this.state.movies;
-    let movie = document.querySelector("#movieInput").value;
+    var array = this.state.movies;
+    let search = document.querySelector("#movieInput").value;
     let url = "".concat(
       baseURL,
       "search/movie?api_key=",
       APIkey,
       "&query=",
-      movie
+      search
     );
+    let movieID = null;
     fetch(url)
+      .then((result) => {
+        return result.json();
+      })
+      .then((data) => {
+        movieID = data.results[0].id;
+        url = "".concat(baseURL, "movie/", movieID, "?api_key=", APIkey);
+        return fetch(url);
+      })
       .then((result) => result.json())
       .then((data) => {
-        let posterPath = data.results[0].poster_path;
         newMovie.poster = "".concat(
           baseImageURL,
           configData.poster_sizes[6],
-          posterPath
+          data.poster_path
         );
-        newMovie.title = data.results[0].title;
-        newMovie.desc = data.results[0].overview;
+        newMovie.title = data.original_title;
+        newMovie.desc = data.overview;
+        newMovie.ratings = data.vote_average;
+        newMovie.release = data.release_date;
+        newMovie.imdb = data.imdb_id;
+        newMovie.runtime = data.runtime;
+        newMovie.genre = data.genres;
+        url = "".concat(
+          baseURL,
+          "movie/",
+          movieID,
+          "/credits?api_key=",
+          APIkey
+        );
+        return fetch(url);
+      })
+      .then((result) => result.json())
+      .then((data) => {
+        console.log(data);
+        let cast = data.cast.slice(0, 4).map((item) => item.name);
+        newMovie.actors = cast;
+        let director = data.crew.filter(findDirector).map((item) => item.name);
+        newMovie.directors = director;
         array[this.state.cardCount] = newMovie;
         this.setState({
           movies: array,
-          adding: false,
           cardCount: this.state.cardCount + 1,
+          adding: false,
         });
       })
       .catch((err) => {
-        console.log("FAILED TO FIND MOVIE");
+        console.log("FAILED getMovie");
       });
 
     this.sliderAdd();
@@ -361,4 +397,8 @@ function truncateText(text) {
     text += "...";
   }
   return text;
+}
+
+function findDirector(job) {
+  if (job.job === "Director") return job.name;
 }
