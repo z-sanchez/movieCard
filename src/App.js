@@ -212,9 +212,7 @@ class AddCards extends React.Component {
       let movies = this.state.movies;
       movies = this.renderCards(movies);
       movieCard = movies.map((e, index) => {
-        return (
-          <Card poster={e.poster} title={e.title} desc={e.desc} key={index} />
-        );
+        return <Card info={e} key={index} />;
       });
     } else {
       movieCard = (
@@ -311,9 +309,9 @@ class Card extends React.Component {
       return (
         <li className="card__listItem--details">
           <div className="card--details">
-            <h1 className="card__title--details">{this.props.title}</h1>
+            <h1 className="card__title--details">{this.props.info.title}</h1>
             <p className="card__text--details">
-              {truncateText(this.props.desc)}
+              {truncateText(this.props.info.desc, 197, 150)}
             </p>
             <div className="starFlex">
               <img
@@ -358,7 +356,8 @@ class Card extends React.Component {
               ></img>
             </div>
             <p className="card__info--details">
-              Director: Fuck <br></br> Cast: Fuck, Fuck, Fuck <br></br>
+              Director: {writeNames(this.props.info.directors)} <br></br> Cast:{" "}
+              {writeNames(this.props.info.actors)} <br></br>
             </p>
             <div className="card__button--background">
               <button className="card__button" onClick={this.handleClick}>
@@ -374,10 +373,10 @@ class Card extends React.Component {
           <div className="card">
             <img
               className="card__image"
-              src={this.props.poster}
+              src={this.props.info.poster}
               alt="movie"
             ></img>
-            <p className="card__text">{this.props.title}</p>
+            <p className="card__text">{this.props.info.title}</p>
             <div className="card__button--background">
               <button className="card__button" onClick={this.handleClick}>
                 ...
@@ -391,9 +390,9 @@ class Card extends React.Component {
 }
 export default App;
 
-function truncateText(text) {
-  if (text.length > 197) {
-    text = text.slice(0, 150);
+function truncateText(text, maxLength, showAmount) {
+  if (text.length > maxLength) {
+    text = text.slice(0, showAmount);
     text += "...";
   }
   return text;
@@ -401,4 +400,16 @@ function truncateText(text) {
 
 function findDirector(job) {
   if (job.job === "Director") return job.name;
+}
+
+function writeNames(array) {
+  if (array.length === 0) return "";
+  let copyArray = array.map((x) => x);
+  let name = null;
+
+  name = copyArray[0];
+  if (0 < array.length - 1) name += ", ";
+  copyArray.splice(0, 1);
+
+  return name + writeNames(copyArray);
 }
