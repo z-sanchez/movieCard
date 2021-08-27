@@ -21,16 +21,16 @@
 
 .grid  
   display: grid   
-  height: 110vh   
-  width: 100vw   
+  height: 1100px   
+  width: 1850px  
   grid-template-columns: auto   
-  grid-template-rows: 13% auto 5%   
-  row-gap: 2vh   
+  grid-template-rows: 160px auto 100px  
+  row-gap: 2px   
   
 
 .navFlex  
   display: flex   
-  justify-content: space-between   
+  justify-content: space-between
   flex-flow: row   
   width: 100%   
   
@@ -39,14 +39,14 @@
   display: flex   
   width: auto   
   align-items: center   
-  margin: 6vh 0 0 5vh   
+  margin: 62px 0 0 60px  
   
 
 .navFlex ul li  
   flex-shrink: 0   
-  margin-right: 3vh   
-  margin-left: 3vh   
-  font-size: 1.8vh   
+  margin-right: 20px   
+  margin-left: 20px 
+  font-size: 18px 
   list-style: none   
   font-family: bahn   
   color: white   
@@ -57,8 +57,8 @@
   
 
 .logo  
-  width: 50vh   
-  margin: 1vh 3vh 0 0   
+  width: 500px   
+  margin: 12px 30px 0 0   
   
 
 .contentFlex  
@@ -70,7 +70,7 @@
 .buttonFlex  
   display: flex   
   justify-content: flex-end   
-  width: auto   
+  width: 100%
   
 
 .buttons__add  
@@ -82,7 +82,7 @@
   background-color: #3D464c   
   color: white   
   font-family: bahn   
-  font-size: 2vh   
+  font-size: 20px  
   
 
 .buttons__add:hover  
@@ -104,12 +104,7 @@
   list-style: none   
   margin-right: 7%   
   margin-left: 7%   
-  
-
-.cardFlex .card__listItem:hover  
-  transform: scale(1.1)   
-  
-
+   
 .card  
   display: flex   
   flex-flow: column nowrap   
@@ -118,25 +113,24 @@
   list-style: none   
   background-color: #3D464C   
   border-radius: 50px   
-  height: 50vh   
-  width: 18vw   
-  min-width: 315px   
-  min-height: 514px   
+  height: 550px  
+  width: 325px  
   
+.cardFlex .card__listItem:hover  
+  transform: scale(1.1)  
 
 .card__image  
   margin-top: 5%   
   border-radius: 25px   
-  height: 38vh   
-  width: 13vw   
-  min-height: 326px   
-  min-width: 202px   
+  height: 380px   
+  width: 250px  
+ 
   
 
 .card__text  
   text-align: center
   font-family: bahn  
-  font-size: 2vh
+  font-size: 23px
   width: 250px
   height: 25px
   overflow: hidden
@@ -150,7 +144,7 @@
   display: flex   
   justify-content: center   
   align-self: flex-end   
-  margin: 5% 1.5vw 0 0   
+  margin: 8% 5% 0 0   
   border-radius: 30px   
   background-color: #5C6871   
   border: none   
@@ -163,7 +157,7 @@
   height: auto   
   min-width: 54px   
   min-height: 41px   
-  font-size: 2vw   
+  font-size: 35px   
   background-color: transparent   
   color: white   
   border: none   
@@ -204,12 +198,12 @@
   left: 0   
   
 
-.addingWindow  
-  position: fixed   
-  z-index: 11   
+.addingWindow 
+  position: fixed
+  z-index: 11
+  top: 250px  
   width: 900px   
-  height: 500px   
-  bottom: 230px   
+  height: 500px     
   border-radius: 50px   
   align-self: center   
   justify-self: center   
@@ -261,15 +255,17 @@ input[type=text]
 
 .card__listItem--details  
   z-index: 12   
-  width: 332.635px   
-  height: 514px   
-  background-color: #111417   
-  border: none   
+  display: flex   
+  flex-flow: column nowrap   
+  align-items: center   
+  justify-content: flex-start   
+  list-style: none   
+  background-color: #3D464C   
   border-radius: 50px   
-  transform: scale(1.1)   
-  
+  height: 550px  
+  width: 325px
+  transform: scale(1.1)
 
-/*YELLOW STARS ADD WITH FUNCITONALITY*/
 .card--details  
   display: flex   
   flex-flow: column nowrap   
@@ -278,13 +274,10 @@ input[type=text]
   list-style: none   
   background-color: #3D464C   
   border-radius: 50px   
-  height: 50vh   
-  width: 18vw   
-  min-width: 315px   
-  min-height: 514px
+  height: 525px   
+  width: 315px  
   .card__button--background  
-    margin-top: auto
-    margin-bottom: 8%
+    margin: auto 11px 11px 0 
   
 
 .card__title--details  
@@ -324,116 +317,6 @@ input[type=text]
 
   
 
-@media screen and (max-width: 1200px)  
-  .card  
-    min-width: 150px   
-    min-height: 375px   
-    width: 300px   
-    height: 500px   
-    
-  
-@media screen and (max-height: 830px)  
-  .cardFlex  
-    margin-bottom: 5vh   
-    
-
-  .card  
-    min-width: 150px   
-    min-height: 375px   
-    width: 300px   
-    height: 500px   
-    
-  
-@media screen and (max-height: 777px)  
-  .grid  
-    display: grid   
-    height: 110vh   
-    width: 100vw   
-    grid-template-columns: auto   
-    grid-template-rows: 100px 800px 50px   
-    row-gap: 1px   
-    
-
-  .navFlex  
-    display: flex   
-    justify-content: space-between   
-    flex-flow: row   
-    width: 100%   
-    
-
-  .navFlex ul  
-    display: flex   
-    flex-shrink: 0   
-    width: 500px   
-    align-items: center   
-    margin: 6vh 0 0 5vh   
-    
-
-  .navFlex li  
-    height: 30px   
-    margin-right: 10px   
-    margin-left: 10px   
-    list-style: none   
-    font-family: bahn   
-    color: white   
-    
-
-  .navFlex li h2  
-    font-size: 20px   
-    
-
-  .navFlex li:hover  
-    transform: scale(1.2)   
-    
-
-  .logo  
-    flex-shrink: 0   
-    width: 20%   
-    margin: 10px 30px 0px 200px   
-    
-
-  .buttonFlex  
-    display: flex   
-    justify-content: flex-end   
-    width: auto   
-    margin-top: 2px   
-    margin-bottom: 2px   
-    height: 20px   
-    
-
-  .buttons__add  
-    margin-right: 5%   
-    border: none   
-    min-height: 18px   
-    width: 4vw   
-    border-radius: 30px   
-    background-color: #3D464c   
-    color: white   
-    font-family: bahn   
-    font-size: 15px   
-    
-
-  .cardFlex  
-    display: flex   
-    flex-shrink: 0   
-    justify-content: center   
-    align-items: center   
-    width: 100%   
-    padding-top: 10px   
-    padding-bottom: 10px   
-    margin-top: 5px   
-    color: white   
-    
-
-  .cardFlex li  
-    list-style: none   
-    margin-right: 7%   
-    margin-left: 7%   
-    
-
-  .cardFlex .card__listItem:hover  
-    transform: none   
-    
   
 /*# sourceMappingURL=index.css.map */
 
