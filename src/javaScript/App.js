@@ -1,7 +1,7 @@
 import React from "react";
-import logo from "./logo.png";
-import unfilledStar from "./unfilledStar.png";
-import filledStar from "./filledStar.png";
+import logo from "../images/logo.png";
+import unfilledStar from "../images/unfilledStar.png";
+import filledStar from "../images/filledStar.png";
 import { getConfig, getMore } from "./tmdbFunctions";
 
 import { APIkey, baseURL, configData, baseImageURL } from "./tmdbFunctions";
