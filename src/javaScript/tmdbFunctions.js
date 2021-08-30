@@ -19,28 +19,6 @@ let getConfig = function () {
     });
 };
 
-let getMovieID = function (keyword) {
-  let url = "".concat(
-    baseURL,
-    "search/movie?api_key=",
-    APIkey,
-    "&query=",
-    keyword
-  );
-  let movieID = null;
-  fetch(url)
-    .then((result) => {
-      return result.json();
-    })
-    .then((data) => {
-      movieID = data.results[0].id;
-      getMore(movieID);
-    })
-    .catch((err) => {
-      console.log("FAILED getMovie");
-    });
-};
-
 let getMore = function (id, movie, array) {
   let url = "".concat(baseURL, "movie/", id, "?api_key=", APIkey);
   fetch(url)
