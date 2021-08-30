@@ -6,24 +6,26 @@ import { findDirector } from "./utilityFunctions";
 class AddCards extends React.Component {
   constructor(props) {
     super(props);
+    this.fade = document.createElement("div");
     this.state = {
       movies: [],
       cardCount: 0,
       adding: false,
-      center: 2,
     };
   }
+
+  addFade = () => {
+    this.fade.classList.add("fade");
+    this.fade.addEventListener("click", this.exitWindow);
+    document.querySelector("body").appendChild(this.fade);
+  };
 
   handleAdd = () => {
     this.setState({
       adding: true,
     });
-    const fade = document.createElement("div");
-    fade.classList.add("fade");
 
-    fade.addEventListener("click", this.exitWindow);
-
-    document.querySelector("body").appendChild(fade);
+    this.addFade();
   };
 
   exitWindow = () => {
@@ -49,6 +51,7 @@ class AddCards extends React.Component {
     };
     var array = this.state.movies;
     let search = document.querySelector("#movieInput").value;
+    let movieID = null;
     let url = "".concat(
       baseURL,
       "search/movie?api_key=",
@@ -56,11 +59,8 @@ class AddCards extends React.Component {
       "&query=",
       search
     );
-    let movieID = null;
     fetch(url)
-      .then((result) => {
-        return result.json();
-      })
+      .then((result) => result.json())
       .then((data) => {
         movieID = data.results[0].id;
         url = "".concat(baseURL, "movie/", movieID, "?api_key=", APIkey);
@@ -91,7 +91,6 @@ class AddCards extends React.Component {
       })
       .then((result) => result.json())
       .then((data) => {
-        console.log(data);
         let cast = data.cast.slice(0, 4).map((item) => item.name);
         newMovie.actors = cast;
         let director = data.crew.filter(findDirector).map((item) => item.name);

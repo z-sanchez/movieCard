@@ -24,7 +24,7 @@ class App extends React.Component {
         </nav>
         <AddCards />
         <footer className="footer">
-          <h1>Footer goes here</h1>
+          <h1>A site by Bruhdot777</h1>
         </footer>
       </div>
     );
