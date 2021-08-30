@@ -1,0 +1,13 @@
+#message {
+  position: relative;
+  margin-top: 12%;
+  font-family: bahn;
+  color: #585c5e;
+}
+
+#message:hover {
+  padding: 0%;
+  transform: none;
+}
+
+/*# sourceMappingURL=noMovieMessage.css.map */

@@ -1,0 +1,27 @@
+.navFlex ul {
+  display: flex;
+  width: auto;
+  align-items: center;
+  margin: 62px 0 0 60px;
+}
+
+.navFlex ul li {
+  flex-shrink: 0;
+  margin-right: 20px;
+  margin-left: 20px;
+  font-size: 18px;
+  list-style: none;
+  font-family: bahn;
+  color: white;
+}
+
+.navFlex ul li:hover {
+  transform: scale(1.2);
+}
+
+.logo {
+  width: 500px;
+  margin: 12px 30px 0 0;
+}
+
+/*# sourceMappingURL=nav.css.map */

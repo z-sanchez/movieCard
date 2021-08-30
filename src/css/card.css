@@ -1,0 +1,77 @@
+.cardFlex {
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding-top: 3%;
+  padding-bottom: 3%;
+  color: white;
+}
+
+.cardFlex li {
+  list-style: none;
+  margin-right: 7%;
+  margin-left: 7%;
+}
+
+.card {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: flex-start;
+  list-style: none;
+  background-color: #3D464C;
+  border-radius: 50px;
+  height: 550px;
+  width: 325px;
+}
+
+.cardFlex .card__listItem:hover {
+  transform: scale(1.1);
+}
+
+.card__image {
+  margin-top: 5%;
+  border-radius: 25px;
+  height: 380px;
+  width: 250px;
+}
+
+.card__text {
+  text-align: center;
+  font-family: bahn;
+  font-size: 23px;
+  width: 250px;
+  height: 25px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin: 8% 6% 0 6%;
+  background-color: #3D464C;
+}
+
+.card__button--background {
+  display: flex;
+  justify-content: center;
+  align-self: flex-end;
+  margin: 8% 5% 0 0;
+  border-radius: 30px;
+  background-color: #5C6871;
+  border: none;
+}
+
+.card__button {
+  position: relative;
+  bottom: 8px;
+  width: 4vw;
+  height: auto;
+  min-width: 54px;
+  min-height: 41px;
+  font-size: 35px;
+  background-color: transparent;
+  color: white;
+  border: none;
+}
+
+/*# sourceMappingURL=card.css.map */

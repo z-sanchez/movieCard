@@ -1,6 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./css/index.css";
+import "./css/nav.css";
+import "./css/addButton.css";
+import "./css/card.css";
+import "./css/cardDetails.css";
+import "./css/addingWindow.css";
+import "./css/slider.css";
+import "./css/noMovieMessage.css";
+import "./css/footer.css";
 import App from "./javaScript/App";
 
 ReactDOM.render(

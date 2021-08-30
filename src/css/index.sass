@@ -1,6 +1,8 @@
 *  
   margin: 0   
-  padding: 0   
+  padding: 0
+  overflow-x: hidden   
+  background-color: #181d21  
   
 
 #movieInput, .addingWindow__findMovie, .addingWindow__title  
@@ -13,11 +15,7 @@
 @font-face  
   font-family: bahn   
   src: url("../fonts/BAHNSCHRIFT.TTF")   
-  
-*  
-  overflow-x: hidden   
-  background-color: #181d21   
-  
+
 
 .grid  
   display: grid   
@@ -35,158 +33,12 @@
   width: 100%   
   
 
-.navFlex ul  
-  display: flex   
-  width: auto   
-  align-items: center   
-  margin: 62px 0 0 60px  
-  
-
-.navFlex ul li  
-  flex-shrink: 0   
-  margin-right: 20px   
-  margin-left: 20px 
-  font-size: 18px 
-  list-style: none   
-  font-family: bahn   
-  color: white   
-  
-
-.navFlex ul li:hover  
-  transform: scale(1.2)   
-  
-
-.logo  
-  width: 500px   
-  margin: 12px 30px 0 0   
-  
-
 .contentFlex  
   display: flex   
   flex-flow: column   
   width: 100%   
   
-
-.buttonFlex  
-  display: flex   
-  justify-content: flex-end   
-  width: 100%
   
-
-.buttons__add  
-  margin-right: 5%   
-  border: none   
-  min-height: 18px   
-  width: 4vw   
-  border-radius: 30px   
-  background-color: #3D464c   
-  color: white   
-  font-family: bahn   
-  font-size: 20px  
-  
-
-.buttons__add:hover  
-  background-color: #10964f   
-  
-
-.cardFlex  
-  display: flex   
-  flex-shrink: 0   
-  justify-content: center   
-  align-items: center   
-  width: 100%   
-  padding-top: 3%   
-  padding-bottom: 3%   
-  color: white   
-  
-
-.cardFlex li  
-  list-style: none   
-  margin-right: 7%   
-  margin-left: 7%   
-   
-.card  
-  display: flex   
-  flex-flow: column nowrap   
-  align-items: center   
-  justify-content: flex-start   
-  list-style: none   
-  background-color: #3D464C   
-  border-radius: 50px   
-  height: 550px  
-  width: 325px  
-  
-.cardFlex .card__listItem:hover  
-  transform: scale(1.1)  
-
-.card__image  
-  margin-top: 5%   
-  border-radius: 25px   
-  height: 380px   
-  width: 250px  
- 
-  
-
-.card__text  
-  text-align: center
-  font-family: bahn  
-  font-size: 23px
-  width: 250px
-  height: 25px
-  overflow: hidden
-  white-space: nowrap
-  text-overflow: ellipsis
-  margin: 8% 6% 0 6%   
-  background-color: #3D464C   
-  
-
-.card__button--background  
-  display: flex   
-  justify-content: center   
-  align-self: flex-end   
-  margin: 8% 5% 0 0   
-  border-radius: 30px   
-  background-color: #5C6871   
-  border: none   
-  
-
-.card__button  
-  position: relative   
-  bottom: 8px   
-  width: 4vw   
-  height: auto   
-  min-width: 54px   
-  min-height: 41px   
-  font-size: 35px   
-  background-color: transparent   
-  color: white   
-  border: none   
-  
-
-.slider  
-  margin-top: 3%   
-  width: 35%   
-  align-self: center   
-  
-
-.footer  
-  display: flex   
-  justify-content: center   
-  color: white   
-  
-
-#message  
-  position: relative   
-  margin-top: 12%   
-  font-family: bahn   
-  color: #585c5e   
-  
-
-#message:hover  
-  padding: 0%   
-  transform: none   
-  
-
 .fade  
   z-index: 10   
   background-color: black   
@@ -197,123 +49,6 @@
   top: 0   
   left: 0   
   
-
-.addingWindow 
-  position: fixed
-  z-index: 11
-  top: 250px  
-  width: 900px   
-  height: 500px     
-  border-radius: 50px   
-  align-self: center   
-  justify-self: center   
-  display: flex   
-  flex-flow: column   
-  
-
-.addingWindow__title  
-  margin-bottom: 2%   
-  
-
-.addingWindow__findMovie  
-  margin: 10% 0 3% 0   
-  
-
-#movieInput  
-  margin-top: 0   
-  background-color: white   
-  border-radius: 30px   
-  border: none   
-  width: 500px   
-  height: 50px   
-  color: black   
-  
-
-input[type=text]  
-  padding-left: 10px   
-  font-size: 20px   
-  
-
-#movieInput:focus  
-  outline: none   
-  
-
-.submit  
-  align-self: flex-end   
-  width: 8%   
-  padding: 3px 0 3px 0   
-  margin: auto 30px 5% 0   
-  border: none   
-  border-radius: 10px   
-  background-color: #5a666e   
-  color: white   
-  
-
-.submit:hover  
-  background-color: #10964f   
-  
-
-.card__listItem--details  
-  z-index: 12   
-  display: flex   
-  flex-flow: column nowrap   
-  align-items: center   
-  justify-content: flex-start   
-  list-style: none   
-  background-color: #3D464C   
-  border-radius: 50px   
-  height: 550px  
-  width: 325px
-  transform: scale(1.1)
-
-.card--details  
-  display: flex   
-  flex-flow: column nowrap   
-  align-items: center   
-  justify-content: flex-start   
-  list-style: none   
-  background-color: #3D464C   
-  border-radius: 50px   
-  height: 525px   
-  width: 315px  
-  .card__button--background  
-    margin: auto 11px 11px 0 
-  
-
-.card__title--details  
-  width: 93%   
-  margin: 5% 3% 10% 3%   
-  text-align: center   
-  font-size: 25px   
-  font-family: bahn   
-  background-color: #3D464C   
-  
-
-.card__text--details  
-  width: 270px
-  height: 90px
-  margin-bottom: 5%
-  background-color: #3D464C
-  
-
-.starFlex  
-  display: flex   
-  margin: 0 0 10% 0   
-  background-color: #3D464C   
-  
-
-.starFlex img  
-  width: 50px   
-  background-color: #3D464C   
-  
-
-.card__info--details  
-  width: 80%   
-  background-color: #3D464C   
-  
-
-.card__info--details p  
-  margin: 5%   
 
   
 
