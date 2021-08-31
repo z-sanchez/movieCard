@@ -1,22 +1,29 @@
 import React from "react";
 import Card from "./Card";
+import Slider from "./Slider";
 import { APIkey, baseURL, configData, baseImageURL } from "./tmdbFunctions";
 import { findDirector } from "./utilityFunctions";
 
 class AddCards extends React.Component {
   constructor(props) {
     super(props);
-    this.fade = document.createElement("div");
+    this.fade = this.createFade();
     this.state = {
       movies: [],
       cardCount: 0,
       adding: false,
+      sliderOn: false,
     };
   }
 
+  createFade = () => {
+    let fade = document.createElement("div");
+    fade.classList.add("fade");
+    fade.addEventListener("click", this.exitWindow);
+    return fade;
+  };
+
   addFade = () => {
-    this.fade.classList.add("fade");
-    this.fade.addEventListener("click", this.exitWindow);
     document.querySelector("body").appendChild(this.fade);
   };
 
@@ -112,48 +119,11 @@ class AddCards extends React.Component {
   };
 
   sliderAdd = () => {
-    if (this.state.cardCount + 1 === 4) {
-      this.sliderOn();
-    } else if (this.state.cardCount + 1 >= 5)
-      document.querySelector(".slider").max = this.state.cardCount + 1;
-    else return;
-  };
-
-  sliderOn = () => {
-    const slider = document.createElement("input");
-    slider.type = "range";
-    slider.min = 1;
-    slider.max = this.state.cardCount + 1;
-    slider.value = 1;
-    slider.classList.add("slider");
-    slider.addEventListener("change", () => {
+    if (this.state.cardCount + 1 > 4) {
       this.setState({
-        center: document.querySelector(".slider").value,
+        sliderOn: true,
       });
-    });
-    document.querySelector(".contentFlex").appendChild(slider);
-  };
-
-  renderCards = (movies) => {
-    let newMovies = [null];
-
-    if (movies.length < 4) return movies;
-
-    if (this.state.center - 1 === 0) {
-      newMovies[0] = movies[movies.length - 1];
-      newMovies[1] = movies[0];
-      newMovies[2] = movies[1];
-    } else if (this.state.center == movies.length) {
-      newMovies[0] = movies[movies.length - 2];
-      newMovies[1] = movies[movies.length - 1];
-      newMovies[2] = movies[0];
-    } else {
-      newMovies[0] = movies[this.state.center - 2];
-      newMovies[1] = movies[this.state.center - 1];
-      newMovies[2] = movies[this.state.center];
     }
-
-    return newMovies;
   };
 
   renderWindow = () => {
@@ -172,13 +142,20 @@ class AddCards extends React.Component {
       );
     } else return;
   };
+
+  renderSlider = () => {
+    if (this.state.sliderOn === true) {
+      return <Slider />;
+    } else return;
+  };
+
   render() {
     let movieCard = null,
-      window = null;
+      window = null,
+      slider = null;
 
     if (this.state.cardCount !== 0) {
       let movies = this.state.movies;
-      movies = this.renderCards(movies);
       movieCard = movies.map((e, index) => {
         return <Card info={e} key={index} />;
       });
@@ -190,6 +167,7 @@ class AddCards extends React.Component {
       );
     }
     window = this.renderWindow();
+    slider = this.renderSlider();
 
     return (
       <div className="contentFlex">
@@ -200,6 +178,7 @@ class AddCards extends React.Component {
         </div>
         <ul className="cardFlex">{movieCard}</ul>
         {window}
+        {slider}
       </div>
     );
   }
