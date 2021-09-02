@@ -119,7 +119,7 @@ class AddCards extends React.Component {
   };
 
   sliderAdd = () => {
-    if (this.state.cardCount + 1 > 4) {
+    if (this.state.cardCount + 1 >= 4) {
       this.setState({
         sliderOn: true,
       });
@@ -145,7 +145,7 @@ class AddCards extends React.Component {
 
   renderSlider = () => {
     if (this.state.sliderOn === true) {
-      return <Slider />;
+      return <Slider max={this.state.cardCount} />;
     } else return;
   };
 
@@ -166,6 +166,7 @@ class AddCards extends React.Component {
         </li>
       );
     }
+
     window = this.renderWindow();
     slider = this.renderSlider();
 

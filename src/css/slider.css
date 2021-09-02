@@ -1,7 +1,9 @@
+form {
+  display: flex;
+  justify-content: center; }
+
 .slider {
   margin-top: 3%;
-  width: 35%;
-  align-self: center;
-}
+  width: 35%; }
 
 /*# sourceMappingURL=slider.css.map */

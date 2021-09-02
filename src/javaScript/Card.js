@@ -12,6 +12,7 @@ class Card extends React.Component {
       rated: false,
     };
   }
+
   handleClick = () => {
     if (this.state.detailsOn === false) {
       this.setState({ detailsOn: true });

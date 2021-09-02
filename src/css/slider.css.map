@@ -1,1 +1,7 @@
-{"version":3,"sourceRoot":"","sources":["slider.sass"],"names":[],"mappings":"AAAA;EACE;EACA;EACA","file":"slider.css"}
+{
+"version": 3,
+"mappings": "AAAA,IAAI;EACF,OAAO,EAAE,IAAI;EACb,eAAe,EAAE,MAAM;;AAEzB,OAAO;EACL,UAAU,EAAE,EAAE;EACd,KAAK,EAAE,GAAG",
+"sources": ["slider.sass"],
+"names": [],
+"file": "slider.css"
+}
