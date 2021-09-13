@@ -1,6 +1,5 @@
 import React from "react";
-import Card from "./Card";
-import Slider from "./Slider";
+import DisplayCards from "./DisplayCards";
 import { APIkey, baseURL, configData, baseImageURL } from "./tmdbFunctions";
 import { findDirector } from "./utilityFunctions";
 
@@ -12,7 +11,6 @@ class AddCards extends React.Component {
       movies: [],
       cardCount: 0,
       adding: false,
-      sliderOn: false,
     };
   }
 
@@ -113,17 +111,7 @@ class AddCards extends React.Component {
         console.log("FAILED getMovie");
       });
 
-    this.sliderAdd();
-
     document.querySelector(".fade").remove();
-  };
-
-  sliderAdd = () => {
-    if (this.state.cardCount + 1 >= 4) {
-      this.setState({
-        sliderOn: true,
-      });
-    }
   };
 
   renderWindow = () => {
@@ -143,32 +131,10 @@ class AddCards extends React.Component {
     } else return;
   };
 
-  renderSlider = () => {
-    if (this.state.sliderOn === true) {
-      return <Slider max={this.state.cardCount} />;
-    } else return;
-  };
-
   render() {
-    let movieCard = null,
-      window = null,
-      slider = null;
-
-    if (this.state.cardCount !== 0) {
-      let movies = this.state.movies;
-      movieCard = movies.map((e, index) => {
-        return <Card info={e} key={index} />;
-      });
-    } else {
-      movieCard = (
-        <li id="message" key="abcdef">
-          <p id="message">No Movies Entered</p>
-        </li>
-      );
-    }
+    let window = null;
 
     window = this.renderWindow();
-    slider = this.renderSlider();
 
     return (
       <div className="contentFlex">
@@ -177,9 +143,13 @@ class AddCards extends React.Component {
             Add
           </button>
         </div>
-        <ul className="cardFlex">{movieCard}</ul>
+        <ul className="cardFlex">
+          <DisplayCards
+            movieCount={this.state.cardCount}
+            movies={this.state.movies}
+          />
+        </ul>
         {window}
-        {slider}
       </div>
     );
   }
