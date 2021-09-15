@@ -13,17 +13,16 @@ class DisplayCards extends React.Component {
 
   renderSlider = () => {
     if (this.props.movieCount >= 4) {
-      ReactDOM.render(
+      let domNode = document.querySelector(".contentFlex");
+      return ReactDOM.createPortal(
         <Slider max={this.props.movieCount} />,
-        document.querySelector(".contentFlex")
+        domNode
       );
     } else return;
   };
 
   render() {
     let movies;
-
-    this.renderSlider();
 
     if (this.props.movieCount !== 0) {
       movies = this.props.movies;
@@ -38,7 +37,7 @@ class DisplayCards extends React.Component {
       );
     }
 
-    return movies;
+    return [movies, this.renderSlider()];
   }
 }
 
