@@ -1,15 +1,14 @@
 import React from "react";
-import unfilledStar from "../images/unfilledStar.png";
-import filledStar from "../images/filledStar.png";
+import Stars from "./Stars";
 import { truncateText, writeNames } from "./utilityFunctions";
 
 class Card extends React.Component {
   constructor(props) {
     super(props);
+    this.setRating = this.setRating.bind(this);
     this.state = {
       detailsOn: false,
       stars: null,
-      rated: false,
     };
   }
 
@@ -28,49 +27,10 @@ class Card extends React.Component {
     this.setState({ detailsOn: false });
   };
 
-  hoverStar = (e) => {
-    let hovered = e.target.id;
-    let stars = document.querySelector(".starFlex");
-
-    for (let i = 0; i < hovered; i++) {
-      stars.childNodes[i].src = filledStar;
-    }
+  setRating = (count) => {
+    this.setState({ stars: count });
   };
 
-  leaveStar = () => {
-    let stars = document.querySelector(".starFlex");
-
-    if (this.state.rated === true) {
-      for (let i = 1; i < 6; i++) {
-        stars.childNodes[i - 1].src = this.renderStars(i);
-      }
-    } else {
-      for (let i = 0; i < 5; i++) {
-        stars.childNodes[i].src = unfilledStar;
-      }
-    }
-  };
-
-  fillStar = (e) => {
-    let clicked = e.target.id;
-    let stars = document.querySelector(".starFlex");
-
-    for (let i = 0; i < clicked; i++) {
-      stars.childNodes[i].src = filledStar;
-    }
-
-    this.setState({
-      stars: clicked,
-      rated: true,
-    });
-  };
-
-  renderStars = (starNumber) => {
-    if (this.state.stars != null) {
-      if (this.state.stars >= starNumber) return filledStar;
-      else return unfilledStar;
-    } else return unfilledStar;
-  };
   render() {
     if (this.state.detailsOn === true) {
       return (
@@ -80,48 +40,7 @@ class Card extends React.Component {
             <p className="card__text--details">
               {truncateText(this.props.info.desc, 197, 150)}
             </p>
-            <div className="starFlex">
-              <img
-                id="1"
-                src={this.renderStars(1)}
-                alt="star"
-                onMouseOver={this.hoverStar}
-                onMouseLeave={this.leaveStar}
-                onClick={this.fillStar}
-              ></img>
-              <img
-                id="2"
-                src={this.renderStars(2)}
-                alt="star"
-                onMouseOver={this.hoverStar}
-                onMouseLeave={this.leaveStar}
-                onClick={this.fillStar}
-              ></img>
-              <img
-                id="3"
-                src={this.renderStars(3)}
-                alt="star"
-                onMouseOver={this.hoverStar}
-                onMouseLeave={this.leaveStar}
-                onClick={this.fillStar}
-              ></img>
-              <img
-                id="4"
-                src={this.renderStars(4)}
-                alt="star"
-                onMouseOver={this.hoverStar}
-                onMouseLeave={this.leaveStar}
-                onClick={this.fillStar}
-              ></img>
-              <img
-                id="5"
-                src={this.renderStars(5)}
-                alt="star"
-                onMouseOver={this.hoverStar}
-                onMouseLeave={this.leaveStar}
-                onClick={this.fillStar}
-              ></img>
-            </div>
+            <Stars setRating={this.setRating} stars={this.state.stars} />
             <p className="card__info--details">
               Director: {writeNames(this.props.info.directors)} <br></br> Cast:{" "}
               {writeNames(this.props.info.actors)} <br></br>
