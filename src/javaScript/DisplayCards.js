@@ -10,6 +10,8 @@ class DisplayCards extends React.Component {
     this.state = {
       movies: this.props.movies,
       center: 2,
+      cardsArray: [],
+      cardCount: 0,
     };
   }
 
@@ -58,16 +60,23 @@ class DisplayCards extends React.Component {
   };
 
   render() {
-    let movies;
+    let movies = null;
+    let info = null;
 
     if (this.props.movieCount !== 0) {
-      movies = this.props.movies.map((item) => {
-        return item;
-      });
+      if (this.state.cardCount !== this.props.movieCount) {
+        info = this.state.movies[this.props.movieCount - 1];
+        let newArray = this.state.cardsArray.map((item) => {
+          return item;
+        });
+        newArray.push(<Card info={info} key={this.props.movieCount - 1} />);
+        this.setState({
+          cardsArray: newArray,
+          cardCount: this.state.cardCount + 1,
+        });
+      }
+      movies = this.state.cardsArray;
       movies = this.prepareMovies(movies);
-      movies = movies.map((e, index) => {
-        return <Card info={e} key={index} />;
-      });
     } else {
       movies = (
         <li id="message" key="abcdef">
@@ -88,3 +97,13 @@ export default DisplayCards;
 //Save the array in state, that way new cards don't have to be created every render. Each time
 //a new movie is added have it passed as a prop and push it onto DisplayCards. Prepare movies should
 //add the new movie card to array (OR) try to create a class meant to serve as a database for user info
+
+/*
+movies = this.props.movies.map((item) => {
+        return item;
+      });
+      movies = this.prepareMovies(movies);
+      movies = movies.map((e, index) => {
+        return <Card info={e} key={index} />;
+      }); 
+*/

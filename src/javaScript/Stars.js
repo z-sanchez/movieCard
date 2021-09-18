@@ -11,6 +11,7 @@ class Stars extends React.Component {
       rated: false,
     };
   }
+
   hoverStar = (e) => {
     let hovered = e.target.id;
     let stars = document.querySelector(".starFlex");
