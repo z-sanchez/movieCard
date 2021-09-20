@@ -8,7 +8,8 @@ class Card extends React.Component {
     this.setRating = this.setRating.bind(this);
     this.state = {
       detailsOn: false,
-      stars: null,
+      stars: this.props.rating,
+      updated: true,
     };
   }
 
@@ -28,10 +29,13 @@ class Card extends React.Component {
   };
 
   setRating = (count) => {
-    this.setState({ stars: count });
+    this.setState({ stars: count, updated: false });
   };
 
   render() {
+    if (this.state.updated === false)
+      this.props.saveCard(this.props.index, this.props.info, this.state.stars);
+
     if (this.state.detailsOn === true) {
       return (
         <li className="card__listItem--details">
@@ -76,3 +80,5 @@ class Card extends React.Component {
 }
 
 export default Card;
+
+//Many warnings need to be resolved. Most are rooting from the several passings of states.

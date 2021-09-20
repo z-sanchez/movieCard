@@ -7,6 +7,7 @@ class DisplayCards extends React.Component {
   constructor(props) {
     super(props);
     this.setCenter = this.setCenter.bind(this);
+    this.saveCard = this.saveCard.bind(this);
     this.state = {
       movies: this.props.movies,
       center: 2,
@@ -59,6 +60,26 @@ class DisplayCards extends React.Component {
     return newSet.slice(0, 3);
   };
 
+  saveCard = (index, info, rating) => {
+    let newArray = this.state.cardsArray.map((item) => {
+      return item;
+    });
+
+    newArray[index] = (
+      <Card
+        info={info}
+        saveCard={this.saveCard}
+        rating={rating}
+        key={index + "a"}
+        index={index}
+      />
+    );
+
+    this.setState({
+      cardsArray: newArray,
+    });
+  };
+
   render() {
     let movies = null;
     let info = null;
@@ -69,13 +90,21 @@ class DisplayCards extends React.Component {
         let newArray = this.state.cardsArray.map((item) => {
           return item;
         });
-        newArray.push(<Card info={info} key={this.props.movieCount - 1} />);
+        newArray.push(
+          <Card
+            info={info}
+            key={this.props.movieCount - 1}
+            saveCard={this.saveCard}
+            rating={null}
+            index={this.props.movieCount - 1}
+          />
+        );
         this.setState({
           cardsArray: newArray,
           cardCount: this.state.cardCount + 1,
         });
       }
-      movies = this.state.cardsArray; //we are no longer dealing with the original components, therefore anything we do will no affect their states
+      movies = this.state.cardsArray;
       movies = this.prepareMovies(movies);
     } else {
       movies = (
