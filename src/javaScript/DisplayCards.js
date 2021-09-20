@@ -75,7 +75,7 @@ class DisplayCards extends React.Component {
           cardCount: this.state.cardCount + 1,
         });
       }
-      movies = this.state.cardsArray;
+      movies = this.state.cardsArray; //we are no longer dealing with the original components, therefore anything we do will no affect their states
       movies = this.prepareMovies(movies);
     } else {
       movies = (
@@ -90,20 +90,3 @@ class DisplayCards extends React.Component {
 }
 
 export default DisplayCards;
-
-//Ratings won't stick becuase each time displayCards renders a new card is created. This new card
-//no longer has the old rating. It is set back to null. To fix this, when movies array is created
-//map and save every card component for each movie. Then only render what is needed from that array
-//Save the array in state, that way new cards don't have to be created every render. Each time
-//a new movie is added have it passed as a prop and push it onto DisplayCards. Prepare movies should
-//add the new movie card to array (OR) try to create a class meant to serve as a database for user info
-
-/*
-movies = this.props.movies.map((item) => {
-        return item;
-      });
-      movies = this.prepareMovies(movies);
-      movies = movies.map((e, index) => {
-        return <Card info={e} key={index} />;
-      }); 
-*/
