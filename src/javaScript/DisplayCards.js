@@ -12,7 +12,6 @@ class DisplayCards extends React.Component {
       movies: this.props.movies,
       center: 2,
       cardsArray: [],
-      cardCount: 0,
     };
   }
 
@@ -75,36 +74,38 @@ class DisplayCards extends React.Component {
       />
     );
 
+    console.log(rating);
+
     this.setState({
       cardsArray: newArray,
     });
   };
 
+  addNewCard = () => {
+    let info = null;
+    info = this.state.movies[this.props.movieCount - 1];
+    let newArray = this.state.cardsArray.map((item) => {
+      return item;
+    });
+    if (this.state.cardsArray.length !== this.props.movieCount) {
+      newArray.push(
+        <Card
+          info={info}
+          key={this.props.movieCount - 1}
+          saveCard={this.saveCard}
+          rating={null}
+          index={this.props.movieCount - 1}
+        />
+      );
+    }
+    return newArray;
+  };
+
   render() {
     let movies = null;
-    let info = null;
 
     if (this.props.movieCount !== 0) {
-      if (this.state.cardCount !== this.props.movieCount) {
-        info = this.state.movies[this.props.movieCount - 1];
-        let newArray = this.state.cardsArray.map((item) => {
-          return item;
-        });
-        newArray.push(
-          <Card
-            info={info}
-            key={this.props.movieCount - 1}
-            saveCard={this.saveCard}
-            rating={null}
-            index={this.props.movieCount - 1}
-          />
-        );
-        this.setState({
-          cardsArray: newArray,
-          cardCount: this.state.cardCount + 1,
-        });
-      }
-      movies = this.state.cardsArray;
+      movies = this.addNewCard();
       movies = this.prepareMovies(movies);
     } else {
       movies = (

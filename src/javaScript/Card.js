@@ -11,6 +11,7 @@ class Card extends React.Component {
       stars: this.props.rating,
       updated: true,
     };
+    this.props.saveCard(this.props.index, this.props.info, this.state.stars);
   }
 
   handleClick = () => {
@@ -30,12 +31,10 @@ class Card extends React.Component {
 
   setRating = (count) => {
     this.setState({ stars: count, updated: false });
+    this.props.saveCard(this.props.index, this.props.info, count);
   };
 
   render() {
-    if (this.state.updated === false)
-      this.props.saveCard(this.props.index, this.props.info, this.state.stars);
-
     if (this.state.detailsOn === true) {
       return (
         <li className="card__listItem--details">
